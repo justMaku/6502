@@ -16,3 +16,7 @@ extension Double: Value {}
 typealias Single = UInt8
 typealias Double = UInt16
 typealias Program = [Operation]
+
+enum GenericError: Swift.Error {
+    case Unimplemented
+}

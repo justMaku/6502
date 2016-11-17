@@ -30,7 +30,7 @@ class CPUTests: XCTestCase {
         XCTAssertEqual(cpu.X, 0)
         XCTAssertEqual(cpu.Y, 0)
         XCTAssertEqual(cpu.SP, 0xfd)
-        XCTAssertEqual(cpu.Status, [.Carry])
+        XCTAssertEqual(cpu.Status, [.carry])
         XCTAssertEqual(cpu.PC, entrypoint)
     }
     

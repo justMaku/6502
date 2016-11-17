@@ -23,7 +23,7 @@ struct Operation {
     
     init(stream: Stream) throws {
         opcode = stream.read() as Single
-        mnemonic = Mnemonic(opcode)
+        mnemonic = try Mnemonic(opcode)
         
         //MARK: Addressing Mode
         switch opcode {

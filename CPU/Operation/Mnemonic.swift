@@ -8,36 +8,44 @@
 
 import Foundation
 
-private let mnemonicTable: [Operation.Mnemonic] = [
-        /*        |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |      */
-        /* 0 */    .BRK, .ORA, .NOP, .SLO, .NOP, .ORA, .ASL, .SLO, .PHP, .ORA, .ASL, .NOP, .NOP, .ORA, .ASL, .SLO, /* 0 */
-        /* 1 */    .BPL, .ORA, .NOP, .SLO, .NOP, .ORA, .ASL, .SLO, .CLC, .ORA, .NOP, .SLO, .NOP, .ORA, .ASL, .SLO, /* 1 */
-        /* 2 */    .JSR, .AND, .NOP, .RLA, .BIT, .AND, .ROL, .RLA, .PLP, .AND, .ROL, .NOP, .BIT, .AND, .ROL, .RLA, /* 2 */
-        /* 3 */    .BMI, .AND, .NOP, .RLA, .NOP, .AND, .ROL, .RLA, .SEC, .AND, .NOP, .RLA, .NOP, .AND, .ROL, .RLA, /* 3 */
-        /* 4 */    .RTI, .EOR, .NOP, .SRE, .NOP, .EOR, .LSR, .SRE, .PHA, .EOR, .LSR, .NOP, .JMP, .EOR, .LSR, .SRE, /* 4 */
-        /* 5 */    .BVC, .EOR, .NOP, .SRE, .NOP, .EOR, .LSR, .SRE, .CLI, .EOR, .NOP, .SRE, .NOP, .EOR, .LSR, .SRE, /* 5 */
-        /* 6 */    .RTS, .ADC, .NOP, .RRA, .NOP, .ADC, .ROR, .RRA, .PLA, .ADC, .ROR, .NOP, .JMP, .ADC, .ROR, .RRA, /* 6 */
-        /* 7 */    .BVS, .ADC, .NOP, .RRA, .NOP, .ADC, .ROR, .RRA, .SEI, .ADC, .NOP, .RRA, .NOP, .ADC, .ROR, .RRA, /* 7 */
-        /* 8 */    .NOP, .STA, .NOP, .SAX, .STY, .STA, .STX, .SAX, .DEY, .NOP, .TXA, .NOP, .STY, .STA, .STX, .SAX, /* 8 */
-        /* 9 */    .BCC, .STA, .NOP, .NOP, .STY, .STA, .STX, .SAX, .TYA, .STA, .TXS, .NOP, .NOP, .STA, .NOP, .NOP, /* 9 */
-        /* A */    .LDY, .LDA, .LDX, .LAX, .LDY, .LDA, .LDX, .LAX, .TAY, .LDA, .TAX, .NOP, .LDY, .LDA, .LDX, .LAX, /* A */
-        /* B */    .BCS, .LDA, .NOP, .LAX, .LDY, .LDA, .LDX, .LAX, .CLV, .LDA, .TSX, .LAX, .LDY, .LDA, .LDX, .LAX, /* B */
-        /* C */    .CPY, .CMP, .NOP, .DCP, .CPY, .CMP, .DEC, .DCP, .INY, .CMP, .DEX, .NOP, .CPY, .CMP, .DEC, .DCP, /* C */
-        /* D */    .BNE, .CMP, .NOP, .DCP, .NOP, .CMP, .DEC, .DCP, .CLD, .CMP, .NOP, .DCP, .NOP, .CMP, .DEC, .DCP, /* D */
-        /* E */    .CPX, .SBC, .NOP, .ISB, .CPX, .SBC, .INC, .ISB, .INX, .SBC, .NOP, .SBC, .CPX, .SBC, .INC, .ISB, /* E */
-        /* F */    .BEQ, .SBC, .NOP, .ISB, .NOP, .SBC, .INC, .ISB, .SED, .SBC, .NOP, .ISB, .NOP, .SBC, .INC, .ISB  /* F */
+private let mnemonicTable: [Operation.Mnemonic?] = [
+    /*        |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |      */
+    /* 0 */    .BRK, .ORA,  nil, .SLO,  nil, .ORA, .ASL, .SLO, .PHP, .ORA, .ASL,  nil,  nil, .ORA, .ASL, .SLO, /* 0 */
+    /* 1 */    .BPL, .ORA,  nil, .SLO,  nil, .ORA, .ASL, .SLO, .CLC, .ORA,  nil, .SLO,  nil, .ORA, .ASL, .SLO, /* 1 */
+    /* 2 */    .JSR, .AND,  nil, .RLA, .BIT, .AND, .ROL, .RLA, .PLP, .AND, .ROL,  nil, .BIT, .AND, .ROL, .RLA, /* 2 */
+    /* 3 */    .BMI, .AND,  nil, .RLA,  nil, .AND, .ROL, .RLA, .SEC, .AND,  nil, .RLA,  nil, .AND, .ROL, .RLA, /* 3 */
+    /* 4 */    .RTI, .EOR,  nil, .SRE,  nil, .EOR, .LSR, .SRE, .PHA, .EOR, .LSR,  nil, .JMP, .EOR, .LSR, .SRE, /* 4 */
+    /* 5 */    .BVC, .EOR,  nil, .SRE,  nil, .EOR, .LSR, .SRE, .CLI, .EOR,  nil, .SRE,  nil, .EOR, .LSR, .SRE, /* 5 */
+    /* 6 */    .RTS, .ADC,  nil, .RRA,  nil, .ADC, .ROR, .RRA, .PLA, .ADC, .ROR,  nil, .JMP, .ADC, .ROR, .RRA, /* 6 */
+    /* 7 */    .BVS, .ADC,  nil, .RRA,  nil, .ADC, .ROR, .RRA, .SEI, .ADC,  nil, .RRA,  nil, .ADC, .ROR, .RRA, /* 7 */
+    /* 8 */     nil, .STA,  nil, .SAX, .STY, .STA, .STX, .SAX, .DEY,  nil, .TXA,  nil, .STY, .STA, .STX, .SAX, /* 8 */
+    /* 9 */    .BCC, .STA,  nil,  nil, .STY, .STA, .STX, .SAX, .TYA, .STA, .TXS,  nil,  nil, .STA,  nil,  nil, /* 9 */
+    /* A */    .LDY, .LDA, .LDX, .LAX, .LDY, .LDA, .LDX, .LAX, .TAY, .LDA, .TAX,  nil, .LDY, .LDA, .LDX, .LAX, /* A */
+    /* B */    .BCS, .LDA,  nil, .LAX, .LDY, .LDA, .LDX, .LAX, .CLV, .LDA, .TSX, .LAX, .LDY, .LDA, .LDX, .LAX, /* B */
+    /* C */    .CPY, .CMP,  nil, .DCP, .CPY, .CMP, .DEC, .DCP, .INY, .CMP, .DEX,  nil, .CPY, .CMP, .DEC, .DCP, /* C */
+    /* D */    .BNE, .CMP,  nil, .DCP,  nil, .CMP, .DEC, .DCP, .CLD, .CMP,  nil, .DCP,  nil, .CMP, .DEC, .DCP, /* D */
+    /* E */    .CPX, .SBC,  nil, .ISB, .CPX, .SBC, .INC, .ISB, .INX, .SBC,  nil, .SBC, .CPX, .SBC, .INC, .ISB, /* E */
+    /* F */    .BEQ, .SBC,  nil, .ISB,  nil, .SBC, .INC, .ISB, .SED, .SBC,  nil, .ISB,  nil, .SBC, .INC, .ISB  /* F */
 ]
 
 extension Operation {
     enum Mnemonic: String {
         
-        init(_ opcode: Single) {
-            self = mnemonicTable[Int(opcode)]
+        enum Error: Swift.Error {
+            case UnknownMnemonicOpcode(opcode: Operation.Opcode)
+            case UnknownMnemonicString(opcode: String)
         }
         
-        init?(_ string: String) {
+        init(_ opcode: Operation.Opcode) throws {
+            guard let mnemonic = mnemonicTable[Int(opcode)] else {
+                throw Error.UnknownMnemonicOpcode(opcode: opcode)
+            }
+            self = mnemonic
+        }
+        
+        init(_ string: String) throws {
             guard let value = Mnemonic(rawValue: string) else {
-                return nil
+                throw Error.UnknownMnemonicString(opcode: string)
             }
             self = value
         }

@@ -15,6 +15,8 @@
 		2E92BC181DDD138700B098A7 /* Mnemonic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E92BC171DDD138700B098A7 /* Mnemonic.swift */; };
 		2E92BC241DDD193900B098A7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E92BC231DDD193900B098A7 /* main.swift */; };
 		2E92BC281DDD194100B098A7 /* CPU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5F17C71DDB80AE0018E019 /* CPU.framework */; };
+		2EEACB5F1DDD272A007C4378 /* MnemonicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEACB5E1DDD272A007C4378 /* MnemonicTest.swift */; };
+		2EEACB611DDD309B007C4378 /* Flags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEACB601DDD309B007C4378 /* Flags.swift */; };
 		2EF8E2A31DDD0C5A00CD5E6A /* Disassembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF8E29C1DDD0C5A00CD5E6A /* Disassembler.swift */; };
 		2EF8E2A41DDD0C5A00CD5E6A /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF8E29D1DDD0C5A00CD5E6A /* Map.swift */; };
 		2EF8E2A51DDD0C5A00CD5E6A /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF8E29E1DDD0C5A00CD5E6A /* Memory.swift */; };
@@ -58,6 +60,8 @@
 		2E92BC171DDD138700B098A7 /* Mnemonic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mnemonic.swift; sourceTree = "<group>"; };
 		2E92BC211DDD193800B098A7 /* Monitor */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Monitor; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E92BC231DDD193900B098A7 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		2EEACB5E1DDD272A007C4378 /* MnemonicTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MnemonicTest.swift; sourceTree = "<group>"; };
+		2EEACB601DDD309B007C4378 /* Flags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flags.swift; sourceTree = "<group>"; };
 		2EF8E29C1DDD0C5A00CD5E6A /* Disassembler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disassembler.swift; sourceTree = "<group>"; };
 		2EF8E29D1DDD0C5A00CD5E6A /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		2EF8E29E1DDD0C5A00CD5E6A /* Memory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
@@ -124,6 +128,7 @@
 				2EF8E29C1DDD0C5A00CD5E6A /* Disassembler.swift */,
 				2EF8E2A11DDD0C5A00CD5E6A /* Stream.swift */,
 				2EF8E2A21DDD0C5A00CD5E6A /* Types.swift */,
+				2EEACB601DDD309B007C4378 /* Flags.swift */,
 			);
 			path = CPU;
 			sourceTree = "<group>";
@@ -133,6 +138,7 @@
 			children = (
 				2E5F17D51DDB80AE0018E019 /* CPUTest.swift */,
 				2E5F17D71DDB80AE0018E019 /* Info.plist */,
+				2EEACB5E1DDD272A007C4378 /* MnemonicTest.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -320,6 +326,7 @@
 				2E5F17E01DDB80D40018E019 /* CPU.swift in Sources */,
 				2EF8E2A71DDD0C5A00CD5E6A /* Raw.swift in Sources */,
 				2EF8E2A91DDD0C5A00CD5E6A /* Types.swift in Sources */,
+				2EEACB611DDD309B007C4378 /* Flags.swift in Sources */,
 				2EF8E2A41DDD0C5A00CD5E6A /* Map.swift in Sources */,
 				2E92BC181DDD138700B098A7 /* Mnemonic.swift in Sources */,
 				2EF8E2A61DDD0C5A00CD5E6A /* Operation.swift in Sources */,
@@ -334,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E5F17D61DDB80AE0018E019 /* CPUTest.swift in Sources */,
+				2EEACB5F1DDD272A007C4378 /* MnemonicTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

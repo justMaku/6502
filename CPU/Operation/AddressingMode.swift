@@ -11,7 +11,7 @@ import Foundation
 extension Operation {
     enum AddressingMode {
         
-        enum AddressingModeError: Error {
+        enum Error: Swift.Error {
         }
         
         case Accumulator
@@ -27,7 +27,7 @@ extension Operation {
         
         
         func address(with: Memory) throws -> Double {
-            return 0
+            throw GenericError.Unimplemented
         }
     }
 }
