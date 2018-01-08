@@ -10,7 +10,7 @@ import Foundation
 
 struct Operation {
     
-    typealias Opcode = Single
+    typealias Opcode = Word
     
     let opcode: Opcode
     let mnemonic: Mnemonic
@@ -18,11 +18,11 @@ struct Operation {
     let addressingMode: AddressingMode
     
     enum OperationError: Error {
-        case UnknownAddressingMode(opcode: Opcode)
+        case unknownAddressingMode(opcode: Opcode)
     }
     
     init(stream: Stream) throws {
-        opcode = stream.read() as Single
+        opcode = stream.read() as Word
         mnemonic = try Mnemonic(opcode)
         
         //MARK: Addressing Mode
@@ -50,8 +50,8 @@ struct Operation {
         case 0xec: fallthrough
         case 0xed: fallthrough
         case 0xee:
-            let data = stream.read() as Double
-            self.addressingMode = .Absolute(data: data)
+            let data = stream.read() as DWord
+            self.addressingMode = .absolute(data: data)
         case 0x1d: fallthrough
         case 0x1e: fallthrough
         case 0x3d: fallthrough
@@ -67,8 +67,8 @@ struct Operation {
         case 0xde: fallthrough
         case 0xfd: fallthrough
         case 0xfe:
-            let data = stream.read() as Double
-            self.addressingMode = .AbsoluteIndexed(data: data, register: .X)
+            let data = stream.read() as DWord
+            self.addressingMode = .absoluteIndexed(data: data, register: .X)
         case 0x19: fallthrough
         case 0x39: fallthrough
         case 0x59: fallthrough
@@ -78,13 +78,13 @@ struct Operation {
         case 0xbe: fallthrough
         case 0xd9: fallthrough
         case 0xf9:
-            let data = stream.read() as Double
-            self.addressingMode = .AbsoluteIndexed(data: data, register: .Y)
+            let data = stream.read() as DWord
+            self.addressingMode = .absoluteIndexed(data: data, register: .Y)
         case 0x0a: fallthrough
         case 0x2a: fallthrough
         case 0x4a: fallthrough
         case 0x6a:
-            self.addressingMode = .Accumulator
+            self.addressingMode = .accumulator
         case 0x09: fallthrough
         case 0x29: fallthrough
         case 0x49: fallthrough
@@ -96,8 +96,8 @@ struct Operation {
         case 0xc9: fallthrough
         case 0xe0: fallthrough
         case 0xe9:
-            let data = stream.read() as Single
-            self.addressingMode = .Immediate(data: data)
+            let data = stream.read() as Word
+            self.addressingMode = .immediate(data: data)
         case 0x0: fallthrough
         case 0x8: fallthrough
         case 0x18: fallthrough
@@ -123,7 +123,7 @@ struct Operation {
         case 0xe8: fallthrough
         case 0xea: fallthrough
         case 0xf8:
-            self.addressingMode = .Implied
+            self.addressingMode = .implied
         case 0x1: fallthrough
         case 0x21: fallthrough
         case 0x41: fallthrough
@@ -132,11 +132,11 @@ struct Operation {
         case 0xa1: fallthrough
         case 0xc1: fallthrough
         case 0xe1:
-            let data = stream.read() as Single
-            self.addressingMode = .IndirectIndexed(data: data, register: .X)
+            let data = stream.read() as Word
+            self.addressingMode = .indirectIndexed(data: data, register: .X)
         case 0x6c:
-            let data = stream.read() as Single
-            self.addressingMode = .Indirect(data: data)
+            let data = stream.read() as Word
+            self.addressingMode = .indirect(data: data)
         case 0x11: fallthrough
         case 0x31: fallthrough
         case 0x51: fallthrough
@@ -145,8 +145,8 @@ struct Operation {
         case 0xb1: fallthrough
         case 0xd1: fallthrough
         case 0xf1:
-            let data = stream.read() as Single
-            self.addressingMode = .IndirectIndexed(data: data, register: .Y)
+            let data = stream.read() as Word
+            self.addressingMode = .indirectIndexed(data: data, register: .Y)
         case 0x10: fallthrough
         case 0x30: fallthrough
         case 0x50: fallthrough
@@ -155,8 +155,8 @@ struct Operation {
         case 0xb0: fallthrough
         case 0xd0: fallthrough
         case 0xf0:
-            let data = stream.read() as Single
-            self.addressingMode = .Relative(data: data)
+            let data = stream.read() as Word
+            self.addressingMode = .relative(data: data)
         case 0x5: fallthrough
         case 0x6: fallthrough
         case 0x24: fallthrough
@@ -178,8 +178,8 @@ struct Operation {
         case 0xe4: fallthrough
         case 0xe5: fallthrough
         case 0xe6:
-            let data = stream.read() as Single
-            self.addressingMode = .ZeroPage(data: data)
+            let data = stream.read() as Word
+            self.addressingMode = .zeroPage(data: data)
         case 0x15: fallthrough
         case 0x16: fallthrough
         case 0x35: fallthrough
@@ -196,14 +196,29 @@ struct Operation {
         case 0xd6: fallthrough
         case 0xf5: fallthrough
         case 0xf6:
-            let data = stream.read() as Single
-            self.addressingMode = .ZeroPageIndexed(data: data, register: .X)
+            let data = stream.read() as Word
+            self.addressingMode = .zeroPageIndexed(data: data, register: .X)
         case 0x96: fallthrough
         case 0xb6:
-            let data = stream.read() as Single
-            self.addressingMode = .ZeroPageIndexed(data: data, register: .Y)
+            let data = stream.read() as Word
+            self.addressingMode = .zeroPageIndexed(data: data, register: .Y)
         default:
-            throw OperationError.UnknownAddressingMode(opcode: self.opcode)
+            throw OperationError.unknownAddressingMode(opcode: self.opcode)
+        }
+    }
+    
+    var size: UInt16 {
+        switch self.addressingMode {
+        case .absolute: return 3
+        case .absoluteIndexed: return 2
+        case .implied: return 1
+        case .immediate: return 2
+        case .indirect: return 2
+        case .accumulator: return 1
+        case .relative: return 2
+        case .zeroPage: return 2
+        case .indirectIndexed: return 2
+        case .zeroPageIndexed: return 2
         }
     }
 }

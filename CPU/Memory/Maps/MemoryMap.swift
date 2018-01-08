@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol Map {
-    func translate(address: Double) -> Double
+public protocol MemoryMap {
+    func translate(address: DWord) -> DWord
 }

@@ -8,14 +8,14 @@
 
 import Foundation
 
+public typealias Word = UInt8
+public typealias DWord = UInt16
+
 protocol Value {}
 
-extension Single: Value {}
+extension Word: Value {}
 extension Double: Value {}
 
-typealias Single = UInt8
-typealias Double = UInt16
-typealias Program = [Operation]
 
 enum GenericError: Swift.Error {
     case Unimplemented

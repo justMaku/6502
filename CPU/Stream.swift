@@ -10,8 +10,8 @@ import Foundation
 
 protocol RawStreamReadable {}
 
-extension Single: RawStreamReadable {}
-extension Double: RawStreamReadable {}
+extension Word: RawStreamReadable {}
+extension DWord: RawStreamReadable {}
 
 extension InputStream: Stream {
     func read(_ length: Int) -> [UInt8] {

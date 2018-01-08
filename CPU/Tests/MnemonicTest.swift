@@ -11,12 +11,12 @@ import XCTest
 
 class MnemonicTest: XCTestCase {
     func testUnknownOpcode() {
-        let opcode: Single = 0x02
+        let opcode: Word = 0x02
         XCTAssertThrowsError(try Operation.Mnemonic(opcode))
     }
     
     func testValidOpcode() {
-        let opcode: Single = 0x00
+        let opcode: Word = 0x00
         guard let mnemonic = try? Operation.Mnemonic(opcode) else {
             return XCTFail()
         }
@@ -37,7 +37,7 @@ class MnemonicTest: XCTestCase {
     }
 
     func testMnemonicDescription() {
-        let opcode: Single = 0x00
+        let opcode: Word = 0x00
         guard let mnemonic = try? Operation.Mnemonic(opcode) else {
             return XCTFail()
         }

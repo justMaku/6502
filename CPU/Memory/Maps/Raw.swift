@@ -8,8 +8,8 @@
 
 import Foundation
 
-class Raw: Map {
-    func translate(address: Double) -> Double {
+class Raw: MemoryMap {
+    func translate(address: DWord) -> DWord {
         return address
     }
 }

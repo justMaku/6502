@@ -10,24 +10,49 @@ import Foundation
 
 extension Operation {
     enum AddressingMode {
-        
         enum Error: Swift.Error {
+            case addressingModeNotImplemented
+            case invalidRegisterIndexed(register: CPU.Register)
         }
         
-        case Accumulator
-        case Immediate(data: Single)
-        case Implied
-        case Relative(data: Single)
-        case Absolute(data: Double)
-        case ZeroPage(data: Single)
-        case Indirect(data: Single)
-        case IndirectIndexed(data: Single, register: CPU.Register)
-        case AbsoluteIndexed(data: Double, register: CPU.Register)
-        case ZeroPageIndexed(data: Single, register: CPU.Register)
+        case accumulator
+        case immediate(data: Word)
+        case implied
+        case relative(data: Word)
+        case absolute(data: DWord)
+        case zeroPage(data: Word)
+        case indirect(data: Word)
+        case indirectIndexed(data: Word, register: CPU.Register)
+        case absoluteIndexed(data: DWord, register: CPU.Register)
+        case zeroPageIndexed(data: Word, register: CPU.Register)
         
+        func value(with cpu: CPU, bus: Bus) throws -> Word {
+            switch self {
+            case .immediate(let data):
+                return data
+            case .relative(let data):
+                return data
+            case _: throw Error.addressingModeNotImplemented
+            }
+        }
         
-        func address(with: Memory) throws -> Double {
-            throw GenericError.Unimplemented
+        func value(with cpu: CPU, bus: Bus) throws -> DWord {
+            switch self {
+            case .absolute(let data):
+                return data
+            case .zeroPageIndexed(let base, let register):
+                switch register {
+                case .X:
+                    return DWord(base &+ cpu.X)
+                case .Y:
+                    return DWord(base &+ cpu.Y)
+                case  _:
+                    throw Error.invalidRegisterIndexed(register: register)
+                }
+            case .relative(let data):
+                return DWord(data)
+            case _: throw Error.addressingModeNotImplemented
+            }
         }
     }
 }
@@ -35,16 +60,16 @@ extension Operation {
 extension Operation.AddressingMode: CustomStringConvertible {
     var description: String {
         switch self {
-        case .Accumulator: return "A"
-        case .Implied: return ""
-        case .Immediate(let data): return "#$\(String(format: "%02x", data))"
-        case .Relative(let data): return "$\(String(format: "%02x", data))"
-        case .ZeroPage(let data): return "$\(String(format: "%02x", data))"
-        case .Indirect(let data): return "$\(String(format: "%02x", data))"
-        case .Absolute(let data): return "$\(String(format: "%04x", data))"
-        case .IndirectIndexed(let data, let register): return "$\(String(format: "%02x", data)), \(register)"
-        case .AbsoluteIndexed(let data, let register): return "$\(String(format: "%04x", data)), \(register)"
-        case .ZeroPageIndexed(let data, let register): return "$\(String(format: "%02x", data)), \(register)"
+        case .accumulator: return "A"
+        case .implied: return ""
+        case .immediate(let data): return "#$\(String(format: "%02x", data))"
+        case .relative(let data): return "$\(String(format: "%02x", data))"
+        case .zeroPage(let data): return "$\(String(format: "%02x", data))"
+        case .indirect(let data): return "$\(String(format: "%02x", data))"
+        case .absolute(let data): return "$\(String(format: "%04x", data))"
+        case .indirectIndexed(let data, let register): return "$\(String(format: "%02x", data)), \(register)"
+        case .absoluteIndexed(let data, let register): return "$\(String(format: "%04x", data)), \(register)"
+        case .zeroPageIndexed(let data, let register): return "$\(String(format: "%02x", data)), \(register)"
         }
     }
 }

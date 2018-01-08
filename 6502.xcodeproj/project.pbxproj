@@ -7,18 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2E5F17D11DDB80AE0018E019 /* CPU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5F17C71DDB80AE0018E019 /* CPU.framework */; };
+		2E5F17D11DDB80AE0018E019 /* MOS6502.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5F17C71DDB80AE0018E019 /* MOS6502.framework */; };
 		2E5F17D61DDB80AE0018E019 /* CPUTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F17D51DDB80AE0018E019 /* CPUTest.swift */; };
 		2E5F17D81DDB80AE0018E019 /* CPU.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E5F17CA1DDB80AE0018E019 /* CPU.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2E5F17E01DDB80D40018E019 /* CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F17DF1DDB80D40018E019 /* CPU.swift */; };
 		2E92BC161DDD11F900B098A7 /* AddressingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E92BC151DDD11F900B098A7 /* AddressingMode.swift */; };
 		2E92BC181DDD138700B098A7 /* Mnemonic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E92BC171DDD138700B098A7 /* Mnemonic.swift */; };
 		2E92BC241DDD193900B098A7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E92BC231DDD193900B098A7 /* main.swift */; };
-		2E92BC281DDD194100B098A7 /* CPU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5F17C71DDB80AE0018E019 /* CPU.framework */; };
+		2EB8CA122003CBEE006A2D5C /* 2600.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB8CA112003CBEE006A2D5C /* 2600.swift */; };
+		2EB8CA172003D2E8006A2D5C /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB8CA152003D2C8006A2D5C /* Bus.swift */; };
+		2EB8CA1A2003D7F2006A2D5C /* MOS6502.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5F17C71DDB80AE0018E019 /* MOS6502.framework */; };
+		2ED8AA43200415FD00D6CF27 /* TIA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED8AA42200415FD00D6CF27 /* TIA.swift */; };
 		2EEACB5F1DDD272A007C4378 /* MnemonicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEACB5E1DDD272A007C4378 /* MnemonicTest.swift */; };
 		2EEACB611DDD309B007C4378 /* Flags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEACB601DDD309B007C4378 /* Flags.swift */; };
 		2EF8E2A31DDD0C5A00CD5E6A /* Disassembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF8E29C1DDD0C5A00CD5E6A /* Disassembler.swift */; };
-		2EF8E2A41DDD0C5A00CD5E6A /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF8E29D1DDD0C5A00CD5E6A /* Map.swift */; };
+		2EF8E2A41DDD0C5A00CD5E6A /* MemoryMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF8E29D1DDD0C5A00CD5E6A /* MemoryMap.swift */; };
 		2EF8E2A51DDD0C5A00CD5E6A /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF8E29E1DDD0C5A00CD5E6A /* Memory.swift */; };
 		2EF8E2A61DDD0C5A00CD5E6A /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF8E29F1DDD0C5A00CD5E6A /* Operation.swift */; };
 		2EF8E2A71DDD0C5A00CD5E6A /* Raw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF8E2A01DDD0C5A00CD5E6A /* Raw.swift */; };
@@ -33,6 +36,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2E5F17C61DDB80AE0018E019;
 			remoteInfo = Pocket.CPU;
+		};
+		2EB8CA182003D7EF006A2D5C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2E5F17BC1DDB80800018E019 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2E5F17C61DDB80AE0018E019;
+			remoteInfo = MOS6502;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -49,7 +59,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2E5F17C71DDB80AE0018E019 /* CPU.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CPU.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E5F17C71DDB80AE0018E019 /* MOS6502.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MOS6502.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E5F17CA1DDB80AE0018E019 /* CPU.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPU.h; sourceTree = "<group>"; };
 		2E5F17CB1DDB80AE0018E019 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E5F17D01DDB80AE0018E019 /* CPU Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CPU Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,10 +70,14 @@
 		2E92BC171DDD138700B098A7 /* Mnemonic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mnemonic.swift; sourceTree = "<group>"; };
 		2E92BC211DDD193800B098A7 /* Monitor */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Monitor; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E92BC231DDD193900B098A7 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		2EB8CA112003CBEE006A2D5C /* 2600.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 2600.swift; sourceTree = "<group>"; };
+		2EB8CA152003D2C8006A2D5C /* Bus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bus.swift; sourceTree = "<group>"; };
+		2EB8CA1B2003DABA006A2D5C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2ED8AA42200415FD00D6CF27 /* TIA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TIA.swift; sourceTree = "<group>"; };
 		2EEACB5E1DDD272A007C4378 /* MnemonicTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MnemonicTest.swift; sourceTree = "<group>"; };
 		2EEACB601DDD309B007C4378 /* Flags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flags.swift; sourceTree = "<group>"; };
 		2EF8E29C1DDD0C5A00CD5E6A /* Disassembler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disassembler.swift; sourceTree = "<group>"; };
-		2EF8E29D1DDD0C5A00CD5E6A /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		2EF8E29D1DDD0C5A00CD5E6A /* MemoryMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryMap.swift; sourceTree = "<group>"; };
 		2EF8E29E1DDD0C5A00CD5E6A /* Memory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 		2EF8E29F1DDD0C5A00CD5E6A /* Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
 		2EF8E2A01DDD0C5A00CD5E6A /* Raw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Raw.swift; sourceTree = "<group>"; };
@@ -83,7 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E5F17D11DDB80AE0018E019 /* CPU.framework in Frameworks */,
+				2E5F17D11DDB80AE0018E019 /* MOS6502.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E92BC281DDD194100B098A7 /* CPU.framework in Frameworks */,
+				2EB8CA1A2003D7F2006A2D5C /* MOS6502.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,13 +118,14 @@
 				2E5F17C91DDB80AE0018E019 /* CPU */,
 				2E92BC221DDD193900B098A7 /* Monitor */,
 				2E5F17C81DDB80AE0018E019 /* Products */,
+				2EB8CA132003CCDC006A2D5C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		2E5F17C81DDB80AE0018E019 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2E5F17C71DDB80AE0018E019 /* CPU.framework */,
+				2E5F17C71DDB80AE0018E019 /* MOS6502.framework */,
 				2E5F17D01DDB80AE0018E019 /* CPU Tests.xctest */,
 				2E92BC211DDD193800B098A7 /* Monitor */,
 			);
@@ -129,6 +144,7 @@
 				2EF8E2A11DDD0C5A00CD5E6A /* Stream.swift */,
 				2EF8E2A21DDD0C5A00CD5E6A /* Types.swift */,
 				2EEACB601DDD309B007C4378 /* Flags.swift */,
+				2EB8CA152003D2C8006A2D5C /* Bus.swift */,
 			);
 			path = CPU;
 			sourceTree = "<group>";
@@ -174,7 +190,7 @@
 		2E92BC1C1DDD191B00B098A7 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
-				2EF8E29D1DDD0C5A00CD5E6A /* Map.swift */,
+				2EF8E29D1DDD0C5A00CD5E6A /* MemoryMap.swift */,
 				2EF8E2A01DDD0C5A00CD5E6A /* Raw.swift */,
 			);
 			path = Maps;
@@ -184,8 +200,18 @@
 			isa = PBXGroup;
 			children = (
 				2E92BC231DDD193900B098A7 /* main.swift */,
+				2EB8CA112003CBEE006A2D5C /* 2600.swift */,
+				2ED8AA42200415FD00D6CF27 /* TIA.swift */,
 			);
 			path = Monitor;
+			sourceTree = "<group>";
+		};
+		2EB8CA132003CCDC006A2D5C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2EB8CA1B2003DABA006A2D5C /* Foundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,9 +228,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		2E5F17C61DDB80AE0018E019 /* CPU */ = {
+		2E5F17C61DDB80AE0018E019 /* MOS6502 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2E5F17D91DDB80AE0018E019 /* Build configuration list for PBXNativeTarget "CPU" */;
+			buildConfigurationList = 2E5F17D91DDB80AE0018E019 /* Build configuration list for PBXNativeTarget "MOS6502" */;
 			buildPhases = (
 				2E5F17C21DDB80AE0018E019 /* Sources */,
 				2E5F17C31DDB80AE0018E019 /* Frameworks */,
@@ -215,9 +241,9 @@
 			);
 			dependencies = (
 			);
-			name = CPU;
+			name = MOS6502;
 			productName = Pocket.CPU;
-			productReference = 2E5F17C71DDB80AE0018E019 /* CPU.framework */;
+			productReference = 2E5F17C71DDB80AE0018E019 /* MOS6502.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		2E5F17CF1DDB80AE0018E019 /* CPU Tests */ = {
@@ -249,6 +275,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				2EB8CA192003D7EF006A2D5C /* PBXTargetDependency */,
 			);
 			name = Monitor;
 			productName = Monitor;
@@ -267,7 +294,7 @@
 					2E5F17C61DDB80AE0018E019 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = Q7LB9QSYQ9;
-						LastSwiftMigration = 0810;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					2E5F17CF1DDB80AE0018E019 = {
@@ -277,6 +304,7 @@
 					};
 					2E92BC201DDD193800B098A7 = {
 						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -293,7 +321,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2E5F17C61DDB80AE0018E019 /* CPU */,
+				2E5F17C61DDB80AE0018E019 /* MOS6502 */,
 				2E5F17CF1DDB80AE0018E019 /* CPU Tests */,
 				2E92BC201DDD193800B098A7 /* Monitor */,
 			);
@@ -327,11 +355,12 @@
 				2EF8E2A71DDD0C5A00CD5E6A /* Raw.swift in Sources */,
 				2EF8E2A91DDD0C5A00CD5E6A /* Types.swift in Sources */,
 				2EEACB611DDD309B007C4378 /* Flags.swift in Sources */,
-				2EF8E2A41DDD0C5A00CD5E6A /* Map.swift in Sources */,
+				2EF8E2A41DDD0C5A00CD5E6A /* MemoryMap.swift in Sources */,
 				2E92BC181DDD138700B098A7 /* Mnemonic.swift in Sources */,
 				2EF8E2A61DDD0C5A00CD5E6A /* Operation.swift in Sources */,
 				2EF8E2A31DDD0C5A00CD5E6A /* Disassembler.swift in Sources */,
 				2E92BC161DDD11F900B098A7 /* AddressingMode.swift in Sources */,
+				2EB8CA172003D2E8006A2D5C /* Bus.swift in Sources */,
 				2EF8E2A81DDD0C5A00CD5E6A /* Stream.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,6 +379,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E92BC241DDD193900B098A7 /* main.swift in Sources */,
+				2ED8AA43200415FD00D6CF27 /* TIA.swift in Sources */,
+				2EB8CA122003CBEE006A2D5C /* 2600.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,8 +389,13 @@
 /* Begin PBXTargetDependency section */
 		2E5F17D31DDB80AE0018E019 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2E5F17C61DDB80AE0018E019 /* CPU */;
+			target = 2E5F17C61DDB80AE0018E019 /* MOS6502 */;
 			targetProxy = 2E5F17D21DDB80AE0018E019 /* PBXContainerItemProxy */;
+		};
+		2EB8CA192003D7EF006A2D5C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2E5F17C61DDB80AE0018E019 /* MOS6502 */;
+			targetProxy = 2EB8CA182003D7EF006A2D5C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -379,6 +415,7 @@
 		2E5F17DA1DDB80AE0018E019 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -430,13 +467,14 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.justmaku.6502.CPU;
+				PRODUCT_BUNDLE_IDENTIFIER = org.justmaku.MOS6502;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -445,6 +483,7 @@
 		2E5F17DB1DDB80AE0018E019 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -489,12 +528,13 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = org.justmaku.6502.CPU;
+				PRODUCT_BUNDLE_IDENTIFIER = org.justmaku.MOS6502;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -503,7 +543,6 @@
 		2E5F17DD1DDB80AE0018E019 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -560,7 +599,6 @@
 		2E5F17DE1DDB80AE0018E019 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -652,7 +690,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -694,7 +733,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -710,7 +750,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2E5F17D91DDB80AE0018E019 /* Build configuration list for PBXNativeTarget "CPU" */ = {
+		2E5F17D91DDB80AE0018E019 /* Build configuration list for PBXNativeTarget "MOS6502" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2E5F17DA1DDB80AE0018E019 /* Debug */,

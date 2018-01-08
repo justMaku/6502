@@ -10,35 +10,35 @@ import Foundation
 
 protocol MemoryReadable {}
 
-extension Single: MemoryReadable {}
-extension Double: MemoryReadable {}
+extension Word: MemoryReadable {}
+extension DWord: MemoryReadable {}
 
-class Memory {
-    var storage: [Single] = Array<Single>(repeating: 0x0, count: 0xFFFF)
+public class Memory {
+    var storage: [Word] = Array<Word>(repeating: 0x0, count: 0xFFFF)
    
-    let map: Map
+    let map: MemoryMap
     
-    init(map: Map) {
+    public init(map: MemoryMap) {
         self.map = map
     }
     
-    func read(address: Double) -> Single {
+    func read(address: DWord) -> Word {
         let address = map.translate(address: address)
         return storage[Int(address)]
     }
     
-    func read(address: Double) -> Double {
-        let lb = self.read(address: address) as Single
-        let hb = self.read(address: address + 1) as Single
+    func read(address: DWord) -> DWord {
+        let lb = self.read(address: address) as Word
+        let hb = self.read(address: address + 1) as Word
         
-        return Double(lb) | Double(hb) << 8
+        return DWord(lb) | DWord(hb) << 8
     }
     
-    func write(address: Double, value: Single) {
+    func write(address: DWord, value: Word) {
         storage[Int(address)] = value
     }
     
-    subscript(address: Double) -> Single {
+    subscript(address: DWord) -> Word {
         get {
             return read(address: address)
         }

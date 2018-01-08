@@ -10,9 +10,9 @@ import Foundation
 
 extension CPU {
     struct Flags: OptionSet {
-        let rawValue: Single
+        let rawValue: Word
         
-        static let sign = Flags(rawValue: 1 << 7)
+        static let negative = Flags(rawValue: 1 << 7)
         static let overflow = Flags(rawValue: 1 << 6)
         static let `break` = Flags(rawValue: 1 << 4)
         static let decimal = Flags(rawValue: 1 << 3)
@@ -21,8 +21,7 @@ extension CPU {
         static let carry = Flags(rawValue: 1 << 0)
     }
     
-    internal func recalculateStatus(flags: Flags, for value: Single) -> Flags {
-        
+    internal func recalculateStatus(flags: Flags, for value: Word) {
         if flags.contains(.carry) {
             calculateCarry(value: value)
         }
@@ -31,30 +30,34 @@ extension CPU {
             calculateCarry(value: value)
         }
         
-        if flags.contains(.sign) {
+        if flags.contains(.negative) {
             calculateSign(value: value)
         }
         
         if flags.contains(.zero) {
             calculateZero(value: value)
         }
-        
-        return flags
     }
     
-    private func calculateCarry(value: Single) {
+    private func calculateCarry(value: Word) {
         
     }
     
-    private func calculateOverflow(value: Single) {
+    private func calculateOverflow(value: Word) {
         
     }
     
-    private func calculateSign(value: Single) {
+    private func calculateSign(value: Word) {
+        let bit = (value & (1 << 7)) != 0
         
+        if bit {
+            Status.insert(.negative)
+        } else {
+            Status.remove(.negative)
+        }
     }
     
-    private func calculateZero(value: Single) {
+    private func calculateZero(value: Word) {
         if value != 0 {
             Status.remove(.zero)
         } else {

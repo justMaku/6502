@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2E5F17C61DDB80AE0018E019"
-               BuildableName = "CPU.framework"
-               BlueprintName = "CPU"
+               BuildableName = "MOS6502.framework"
+               BlueprintName = "MOS6502"
                ReferencedContainer = "container:6502.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -26,6 +26,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES"
       codeCoverageEnabled = "YES">
       <Testables>
@@ -44,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2E5F17C61DDB80AE0018E019"
-            BuildableName = "CPU.framework"
-            BlueprintName = "CPU"
+            BuildableName = "MOS6502.framework"
+            BlueprintName = "MOS6502"
             ReferencedContainer = "container:6502.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -56,6 +57,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -66,8 +68,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2E5F17C61DDB80AE0018E019"
-            BuildableName = "CPU.framework"
-            BlueprintName = "CPU"
+            BuildableName = "MOS6502.framework"
+            BlueprintName = "MOS6502"
             ReferencedContainer = "container:6502.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -84,8 +86,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2E5F17C61DDB80AE0018E019"
-            BuildableName = "CPU.framework"
-            BlueprintName = "CPU"
+            BuildableName = "MOS6502.framework"
+            BlueprintName = "MOS6502"
             ReferencedContainer = "container:6502.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
