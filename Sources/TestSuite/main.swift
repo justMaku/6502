@@ -21,6 +21,6 @@ do {
     try computer.reset()
     try computer.run()
 } catch let error {
-    print(error.localizedDescription)
+    print(error)
     exit(1)
 }

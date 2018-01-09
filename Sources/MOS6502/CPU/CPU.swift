@@ -10,7 +10,7 @@ import Foundation
 
 public class CPU {
     enum Error: Swift.Error {
-        case unimplementedOperation(opcode: Instruction.Opcode)
+        case unimplementedInstruction(instruction: Instruction)
     }
     
     enum Register {
@@ -46,8 +46,8 @@ public class CPU {
     }
     
     public func step() throws {
-        let operation = try fetch()
-        try execute(operation: operation)
+        let instruction = try fetch()
+        try execute(instruction: instruction)
     }
     
     public func run() throws {
@@ -56,43 +56,43 @@ public class CPU {
         }
     }
     
-    func execute(operation: Instruction) throws {
-        switch operation.mnemonic {
+    func execute(instruction: Instruction) throws {
+        switch instruction.mnemonic {
         case .SEI:
             Status.insert(.interrupt)
-            PC += operation.size
+            PC += instruction.size
         case .CLD:
             Status.remove(.decimal)
-            PC += operation.size
+            PC += instruction.size
         case .LDX:
-            X = try operation.addressingMode.value(with: self, bus: bus)
+            X = try instruction.addressingMode.value(with: self, bus: bus)
             recalculateStatus(flags: [.zero, .negative], for: X)
-            PC += operation.size
+            PC += instruction.size
         case .LDA:
-            A = try operation.addressingMode.value(with: self, bus: bus)
+            A = try instruction.addressingMode.value(with: self, bus: bus)
             recalculateStatus(flags: [.zero, .negative], for: A)
-            PC += operation.size
+            PC += instruction.size
         case .TXS:
             SP = X
             recalculateStatus(flags: [.zero, .negative], for: X)
-            PC += operation.size
+            PC += instruction.size
         case .TSX:
             X = try pop()
-            PC += operation.size
+            PC += instruction.size
         case .JSR:
-            try push(PC + operation.size)
-            PC = try operation.addressingMode.value(with: self, bus: bus)
+            try push(PC + instruction.size)
+            PC = try instruction.addressingMode.value(with: self, bus: bus)
         case .INX:
             X = X &+ 1
             recalculateStatus(flags: [.zero, .negative], for: X)
-            PC += operation.size
+            PC += instruction.size
         case .STA:
-            let address: UInt16 = try operation.addressingMode.value(with: self, bus: bus)
+            let address: UInt16 = try instruction.addressingMode.value(with: self, bus: bus)
             try bus.write(to: address, value: A)
-            PC += operation.size
+            PC += instruction.size
         case .BNE:
             if Status.contains(.zero) != true {
-                var offset: UInt16 = try operation.addressingMode.value(with: self, bus: bus)
+                var offset: UInt16 = try instruction.addressingMode.value(with: self, bus: bus)
                 
                 if (offset & 0x80) != 0 {
                     offset |= 0xFF00;
@@ -100,12 +100,12 @@ public class CPU {
                 
                 PC = PC &+ UInt16(offset)
             } else {
-                PC += operation.size
+                PC += instruction.size
             }
         case .RTS:
             PC = try pop()
         case _:
-            throw Error.unimplementedOperation(opcode: operation.opcode)
+            throw Error.unimplementedInstruction(instruction: instruction)
         }
     }
     

@@ -1,5 +1,5 @@
 //
-//  Operation.swift
+//  Instruction.swift
 //  6502
 //
 //  Created by Michał Kałużny on 15/11/2016.
@@ -17,7 +17,7 @@ struct Instruction {
     
     let addressingMode: AddressingMode
     
-    enum OperationError: Error {
+    enum Error: Swift.Error {
         case unknownAddressingMode(opcode: Opcode)
     }
     
@@ -203,7 +203,7 @@ struct Instruction {
             let data = stream.read() as UInt8
             addressingMode = .zeroPageIndexed(data: data, register: .Y)
         default:
-            throw OperationError.unknownAddressingMode(opcode: opcode)
+            throw Error.unknownAddressingMode(opcode: opcode)
         }
     }
     
