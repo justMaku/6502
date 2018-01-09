@@ -32,20 +32,19 @@ extension Instruction {
     enum Mnemonic: String {
         
         enum Error: Swift.Error {
-            case UnknownMnemonicOpcode(opcode: Instruction.Opcode)
-            case UnknownMnemonicString(opcode: String)
+            case unknownMnemonic(opcode: String)
         }
         
-        init(_ opcode: Instruction.Opcode) throws {
+        init(_ opcode: UInt8) throws {
             guard let mnemonic = mnemonicTable[Int(opcode)] else {
-                throw Error.UnknownMnemonicOpcode(opcode: opcode)
+                throw Instruction.Error.unknownOpcode(opcode: opcode)
             }
             self = mnemonic
         }
         
         init(_ string: String) throws {
             guard let value = Mnemonic(rawValue: string) else {
-                throw Error.UnknownMnemonicString(opcode: string)
+                throw Error.unknownMnemonic(opcode: string)
             }
             self = value
         }

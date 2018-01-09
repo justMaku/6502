@@ -110,11 +110,7 @@ public class CPU {
     }
     
     private func fetch() throws -> Instruction {
-        // definitely not optimal
-        let data = try [PC, PC + 1, PC + 2].map { try bus.read(from: $0) as UInt8 }
-        let stream = MemoryStream(storage: data)
-        
-        return try Instruction(stream: stream)
+        return try Instruction(from: bus, PC: PC)
     }
 }
 
