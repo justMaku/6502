@@ -10,7 +10,7 @@ import Foundation
 
 struct Instruction {
     
-    typealias Opcode = Word
+    typealias Opcode = UInt8
     
     let opcode: Opcode
     let mnemonic: Mnemonic
@@ -22,7 +22,7 @@ struct Instruction {
     }
     
     init(stream: Stream) throws {
-        opcode = stream.read() as Word
+        opcode = stream.read() as UInt8
         mnemonic = try Mnemonic(opcode)
         
         //MARK: Addressing Mode
@@ -50,7 +50,7 @@ struct Instruction {
         case 0xec: fallthrough
         case 0xed: fallthrough
         case 0xee:
-            let data = stream.read() as DWord
+            let data = stream.read() as UInt16
             self.addressingMode = .absolute(data: data)
         case 0x1d: fallthrough
         case 0x1e: fallthrough
@@ -67,7 +67,7 @@ struct Instruction {
         case 0xde: fallthrough
         case 0xfd: fallthrough
         case 0xfe:
-            let data = stream.read() as DWord
+            let data = stream.read() as UInt16
             self.addressingMode = .absoluteIndexed(data: data, register: .X)
         case 0x19: fallthrough
         case 0x39: fallthrough
@@ -78,7 +78,7 @@ struct Instruction {
         case 0xbe: fallthrough
         case 0xd9: fallthrough
         case 0xf9:
-            let data = stream.read() as DWord
+            let data = stream.read() as UInt16
             self.addressingMode = .absoluteIndexed(data: data, register: .Y)
         case 0x0a: fallthrough
         case 0x2a: fallthrough
@@ -96,7 +96,7 @@ struct Instruction {
         case 0xc9: fallthrough
         case 0xe0: fallthrough
         case 0xe9:
-            let data = stream.read() as Word
+            let data = stream.read() as UInt8
             self.addressingMode = .immediate(data: data)
         case 0x0: fallthrough
         case 0x8: fallthrough
@@ -132,10 +132,10 @@ struct Instruction {
         case 0xa1: fallthrough
         case 0xc1: fallthrough
         case 0xe1:
-            let data = stream.read() as Word
+            let data = stream.read() as UInt8
             self.addressingMode = .indirectIndexed(data: data, register: .X)
         case 0x6c:
-            let data = stream.read() as Word
+            let data = stream.read() as UInt8
             self.addressingMode = .indirect(data: data)
         case 0x11: fallthrough
         case 0x31: fallthrough
@@ -145,7 +145,7 @@ struct Instruction {
         case 0xb1: fallthrough
         case 0xd1: fallthrough
         case 0xf1:
-            let data = stream.read() as Word
+            let data = stream.read() as UInt8
             self.addressingMode = .indirectIndexed(data: data, register: .Y)
         case 0x10: fallthrough
         case 0x30: fallthrough
@@ -155,7 +155,7 @@ struct Instruction {
         case 0xb0: fallthrough
         case 0xd0: fallthrough
         case 0xf0:
-            let data = stream.read() as Word
+            let data = stream.read() as UInt8
             self.addressingMode = .relative(data: data)
         case 0x5: fallthrough
         case 0x6: fallthrough
@@ -178,7 +178,7 @@ struct Instruction {
         case 0xe4: fallthrough
         case 0xe5: fallthrough
         case 0xe6:
-            let data = stream.read() as Word
+            let data = stream.read() as UInt8
             self.addressingMode = .zeroPage(data: data)
         case 0x15: fallthrough
         case 0x16: fallthrough
@@ -196,11 +196,11 @@ struct Instruction {
         case 0xd6: fallthrough
         case 0xf5: fallthrough
         case 0xf6:
-            let data = stream.read() as Word
+            let data = stream.read() as UInt8
             self.addressingMode = .zeroPageIndexed(data: data, register: .X)
         case 0x96: fallthrough
         case 0xb6:
-            let data = stream.read() as Word
+            let data = stream.read() as UInt8
             self.addressingMode = .zeroPageIndexed(data: data, register: .Y)
         default:
             throw OperationError.unknownAddressingMode(opcode: self.opcode)

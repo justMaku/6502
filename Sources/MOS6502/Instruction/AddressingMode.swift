@@ -16,17 +16,17 @@ extension Instruction {
         }
         
         case accumulator
-        case immediate(data: Word)
+        case immediate(data: UInt8)
         case implied
-        case relative(data: Word)
-        case absolute(data: DWord)
-        case zeroPage(data: Word)
-        case indirect(data: Word)
-        case indirectIndexed(data: Word, register: CPU.Register)
-        case absoluteIndexed(data: DWord, register: CPU.Register)
-        case zeroPageIndexed(data: Word, register: CPU.Register)
+        case relative(data: UInt8)
+        case absolute(data: UInt16)
+        case zeroPage(data: UInt8)
+        case indirect(data: UInt8)
+        case indirectIndexed(data: UInt8, register: CPU.Register)
+        case absoluteIndexed(data: UInt16, register: CPU.Register)
+        case zeroPageIndexed(data: UInt8, register: CPU.Register)
         
-        func value(with cpu: CPU, bus: Bus) throws -> Word {
+        func value(with cpu: CPU, bus: Bus) throws -> UInt8 {
             switch self {
             case .immediate(let data):
                 return data
@@ -36,21 +36,21 @@ extension Instruction {
             }
         }
         
-        func value(with cpu: CPU, bus: Bus) throws -> DWord {
+        func value(with cpu: CPU, bus: Bus) throws -> UInt16 {
             switch self {
             case .absolute(let data):
                 return data
             case .zeroPageIndexed(let base, let register):
                 switch register {
                 case .X:
-                    return DWord(base &+ cpu.X)
+                    return UInt16(base &+ cpu.X)
                 case .Y:
-                    return DWord(base &+ cpu.Y)
+                    return UInt16(base &+ cpu.Y)
                 case  _:
                     throw Error.invalidRegisterIndexed(register: register)
                 }
             case .relative(let data):
-                return DWord(data)
+                return UInt16(data)
             case _: throw Error.addressingModeNotImplemented
             }
         }

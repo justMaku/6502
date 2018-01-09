@@ -19,7 +19,6 @@
 		OBJ_60 /* Mnemonic.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* Mnemonic.swift */; };
 		OBJ_61 /* Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* Instruction.swift */; };
 		OBJ_62 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* Stream.swift */; };
-		OBJ_63 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* Types.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +41,6 @@
 		OBJ_20 /* Mnemonic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mnemonic.swift; sourceTree = "<group>"; };
 		OBJ_21 /* Instruction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instruction.swift; sourceTree = "<group>"; };
 		OBJ_22 /* Stream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
-		OBJ_23 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		OBJ_25 /* Generic6502.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generic6502.swift; sourceTree = "<group>"; };
 		OBJ_26 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
@@ -132,7 +130,6 @@
 				OBJ_12 /* Flags.swift */,
 				OBJ_18 /* Instruction */,
 				OBJ_22 /* Stream.swift */,
-				OBJ_23 /* Types.swift */,
 			);
 			name = MOS6502;
 			path = Sources/MOS6502;
@@ -245,7 +242,6 @@
 				OBJ_60 /* Mnemonic.swift in Sources */,
 				OBJ_61 /* Instruction.swift in Sources */,
 				OBJ_62 /* Stream.swift in Sources */,
-				OBJ_63 /* Types.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

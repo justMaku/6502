@@ -22,14 +22,14 @@ public class CPU {
         case S
     }
     
-    static let stackPointerBase: DWord = 0x100
+    static let stackPointerBase: UInt16 = 0x100
 
     //MARK: Registers
-    public var PC: DWord = 0
-    var  A: Word = 0
-    var  X: Word = 0
-    var  Y: Word = 0
-    var  SP: Word = 0
+    public var PC: UInt16 = 0
+    var  A: UInt8 = 0
+    var  X: UInt8 = 0
+    var  Y: UInt8 = 0
+    var  SP: UInt8 = 0
     var  Status: Flags = []
     
     let bus: Bus
@@ -58,29 +58,29 @@ public class CPU {
         }
     }
     
-    public func pop() throws -> Word {
+    public func pop() throws -> UInt8 {
         self.SP += 1
         
-        let value: Word = try bus.read(from: DWord(self.SP) + CPU.stackPointerBase)
+        let value: UInt8 = try bus.read(from: UInt16(self.SP) + CPU.stackPointerBase)
         
         return value
     }
     
-    func pop() throws -> DWord {
-        let low: Word = try pop()
-        let high: Word = try pop()
+    func pop() throws -> UInt16 {
+        let low: UInt8 = try pop()
+        let high: UInt8 = try pop()
         
-        return DWord(low) | DWord(high) << 8
+        return UInt16(low) | UInt16(high) << 8
     }
     
-    public func push(_ value: Word) throws {
-        try self.bus.write(to: DWord(self.SP) + CPU.stackPointerBase, value: value)
+    public func push(_ value: UInt8) throws {
+        try self.bus.write(to: UInt16(self.SP) + CPU.stackPointerBase, value: value)
         self.SP -= 1
     }
     
-    public func push(_ value: DWord) throws {
-        let low: Word = Word(value & 0xFF)
-        let high: Word = Word(value >> 8) & 0xFF
+    public func push(_ value: UInt16) throws {
+        let low: UInt8 = UInt8(value & 0xFF)
+        let high: UInt8 = UInt8(value >> 8) & 0xFF
 
         try self.push(high)
         try self.push(low)
@@ -117,18 +117,18 @@ public class CPU {
             recalculateStatus(flags: [.zero, .negative], for: self.X)
             self.PC += operation.size
         case .STA:
-            let address: DWord = try operation.addressingMode.value(with: self, bus: bus)
+            let address: UInt16 = try operation.addressingMode.value(with: self, bus: bus)
             try self.bus.write(to: address, value: self.A)
             self.PC += operation.size
         case .BNE:
             if self.Status.contains(.zero) != true {
-                var offset: DWord = try operation.addressingMode.value(with: self, bus: bus)
+                var offset: UInt16 = try operation.addressingMode.value(with: self, bus: bus)
                 
                 if (offset & 0x80) != 0 {
                     offset |= 0xFF00;
                 }
                 
-                self.PC = self.PC &+ DWord(offset)
+                self.PC = self.PC &+ UInt16(offset)
             } else {
                 self.PC += operation.size
             }
@@ -141,7 +141,7 @@ public class CPU {
     
     private func fetch() throws -> Instruction {
         // definitely not optimal
-        let data = try [PC, PC + 1, PC + 2].map { try bus.read(from: $0) as Word }
+        let data = try [PC, PC + 1, PC + 2].map { try bus.read(from: $0) as UInt8 }
         let stream = MemoryStream(storage: data)
         
         return try Instruction(stream: stream)

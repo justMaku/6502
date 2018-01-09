@@ -27,18 +27,18 @@ class Generic6502: Bus {
         cpu.PC = 0x400
     }
     
-    func read(from address: DWord) throws -> Word {
+    func read(from address: UInt16) throws -> UInt8 {
         return memory[Int(address)]
     }
     
-    func read(from address: DWord) throws -> DWord {
-        let low: Word = try read(from: address)
-        let high: Word = try read(from: address + 1)
+    func read(from address: UInt16) throws -> UInt16 {
+        let low: UInt8 = try read(from: address)
+        let high: UInt8 = try read(from: address + 1)
         
-        return (DWord(high) << 8 | DWord(low))
+        return (UInt16(high) << 8 | UInt16(low))
     }
     
-    func write(to address: DWord, value: Word) throws {
+    func write(to address: UInt16, value: UInt8) throws {
         memory[Int(address)] = value
     }
 }

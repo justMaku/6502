@@ -10,7 +10,7 @@ import Foundation
 
 extension CPU {
     struct Flags: OptionSet {
-        let rawValue: Word
+        let rawValue: UInt8
         
         static let negative = Flags(rawValue: 1 << 7)
         static let overflow = Flags(rawValue: 1 << 6)
@@ -21,7 +21,7 @@ extension CPU {
         static let carry = Flags(rawValue: 1 << 0)
     }
     
-    internal func recalculateStatus(flags: Flags, for value: Word) {
+    internal func recalculateStatus(flags: Flags, for value: UInt8) {
         if flags.contains(.carry) {
             calculateCarry(value: value)
         }
@@ -39,15 +39,15 @@ extension CPU {
         }
     }
     
-    private func calculateCarry(value: Word) {
+    private func calculateCarry(value: UInt8) {
         
     }
     
-    private func calculateOverflow(value: Word) {
+    private func calculateOverflow(value: UInt8) {
         
     }
     
-    private func calculateSign(value: Word) {
+    private func calculateSign(value: UInt8) {
         let bit = (value & (1 << 7)) != 0
         
         if bit {
@@ -57,7 +57,7 @@ extension CPU {
         }
     }
     
-    private func calculateZero(value: Word) {
+    private func calculateZero(value: UInt8) {
         if value != 0 {
             Status.remove(.zero)
         } else {

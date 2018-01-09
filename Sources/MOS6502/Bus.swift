@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol Bus {
-    func read(from address: DWord) throws -> Word
-    func read(from address: DWord) throws -> DWord
-    func write(to address: DWord, value: Word) throws
+    func read(from address: UInt16) throws -> UInt8
+    func read(from address: UInt16) throws -> UInt16
+    func write(to address: UInt16, value: UInt8) throws
 }
