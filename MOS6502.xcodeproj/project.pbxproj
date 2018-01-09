@@ -68,14 +68,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		OBJ_18 /* Operation */ = {
+		OBJ_18 /* Instruction */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_19 /* AddressingMode.swift */,
 				OBJ_20 /* Mnemonic.swift */,
 				OBJ_21 /* Instruction.swift */,
 			);
-			path = Operation;
+			path = Instruction;
 			sourceTree = "<group>";
 		};
 		OBJ_24 /* TestSuite */ = {
@@ -130,7 +130,7 @@
 				OBJ_10 /* CPU.swift */,
 				OBJ_11 /* Disassembler.swift */,
 				OBJ_12 /* Flags.swift */,
-				OBJ_18 /* Operation */,
+				OBJ_18 /* Instruction */,
 				OBJ_22 /* Stream.swift */,
 				OBJ_23 /* Types.swift */,
 			);
