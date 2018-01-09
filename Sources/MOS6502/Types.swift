@@ -16,7 +16,6 @@ protocol Value {}
 extension Word: Value {}
 extension Double: Value {}
 
-
 enum GenericError: Swift.Error {
     case Unimplemented
 }

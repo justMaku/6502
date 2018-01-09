@@ -25,7 +25,7 @@ public class CPU {
     static let stackPointerBase: DWord = 0x100
 
     //MARK: Registers
-    var PC: DWord = 0
+    public var PC: DWord = 0
     var  A: Word = 0
     var  X: Word = 0
     var  Y: Word = 0
@@ -110,7 +110,7 @@ public class CPU {
             self.X = try pop()
             PC += operation.size
         case .JSR:
-            try self.push(self.PC + 2)
+            try self.push(self.PC + operation.size)
             self.PC = try operation.addressingMode.value(with: self, bus: bus)
         case .INX:
             self.X = self.X &+ 1
@@ -133,7 +133,7 @@ public class CPU {
                 self.PC += operation.size
             }
         case .RTS:
-            self.PC = try pop() + 1
+            self.PC = try pop()
         case _:
             throw Error.unimplementedOperation(opcode: operation.opcode)
         }
