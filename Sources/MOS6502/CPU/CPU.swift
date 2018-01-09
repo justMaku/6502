@@ -22,8 +22,6 @@ public class CPU {
         case S
     }
     
-    static let stackPointerBase: UInt16 = 0x100
-
     //MARK: Registers
     public var PC: UInt16 = 0
     var  A: UInt8 = 0

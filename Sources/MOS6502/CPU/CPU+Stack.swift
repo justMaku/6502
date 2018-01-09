@@ -8,6 +8,8 @@
 import Foundation
 
 extension CPU {
+    static let stackPointerBase: UInt16 = 0x100
+
     internal func pop() throws -> UInt8 {
         self.SP += 1
         
