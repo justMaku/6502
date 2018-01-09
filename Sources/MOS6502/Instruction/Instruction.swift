@@ -208,18 +208,7 @@ struct Instruction {
     }
     
     var size: UInt16 {
-        switch self.addressingMode {
-        case .absolute: return 3
-        case .absoluteIndexed: return 2
-        case .implied: return 1
-        case .immediate: return 2
-        case .indirect: return 2
-        case .accumulator: return 1
-        case .relative: return 2
-        case .zeroPage: return 2
-        case .indirectIndexed: return 2
-        case .zeroPageIndexed: return 2
-        }
+        return addressingMode.dataSize + 1
     }
 }
 

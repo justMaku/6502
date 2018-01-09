@@ -54,6 +54,21 @@ extension Instruction {
             case _: throw Error.addressingModeNotImplemented
             }
         }
+        
+        var dataSize: UInt16 {
+            switch self {
+            case .absolute: return 2
+            case .absoluteIndexed: return 1
+            case .implied: return 0
+            case .immediate: return 1
+            case .indirect: return 1
+            case .accumulator: return 0
+            case .relative: return 1
+            case .zeroPage: return 1
+            case .indirectIndexed: return 1
+            case .zeroPageIndexed: return 1
+            }
+        }
     }
 }
 
