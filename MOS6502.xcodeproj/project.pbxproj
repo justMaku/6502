@@ -13,7 +13,6 @@
 		OBJ_45 /* MOS6502.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "MOS6502::MOS6502::Product" /* MOS6502.framework */; };
 		OBJ_52 /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Bus.swift */; };
 		OBJ_53 /* CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* CPU.swift */; };
-		OBJ_54 /* Disassembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Disassembler.swift */; };
 		OBJ_55 /* Flags.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Flags.swift */; };
 		OBJ_59 /* AddressingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* AddressingMode.swift */; };
 		OBJ_60 /* Mnemonic.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* Mnemonic.swift */; };
@@ -35,7 +34,6 @@
 		"MOS6502::MOS6502::Product" /* MOS6502.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MOS6502.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"MOS6502::TestSuite::Product" /* TestSuite */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestSuite; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* CPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPU.swift; sourceTree = "<group>"; };
-		OBJ_11 /* Disassembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disassembler.swift; sourceTree = "<group>"; };
 		OBJ_12 /* Flags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flags.swift; sourceTree = "<group>"; };
 		OBJ_19 /* AddressingMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressingMode.swift; sourceTree = "<group>"; };
 		OBJ_20 /* Mnemonic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mnemonic.swift; sourceTree = "<group>"; };
@@ -126,7 +124,6 @@
 			children = (
 				OBJ_9 /* Bus.swift */,
 				OBJ_10 /* CPU.swift */,
-				OBJ_11 /* Disassembler.swift */,
 				OBJ_12 /* Flags.swift */,
 				OBJ_18 /* Instruction */,
 				OBJ_22 /* Stream.swift */,
@@ -236,7 +233,6 @@
 			files = (
 				OBJ_52 /* Bus.swift in Sources */,
 				OBJ_53 /* CPU.swift in Sources */,
-				OBJ_54 /* Disassembler.swift in Sources */,
 				OBJ_55 /* Flags.swift in Sources */,
 				OBJ_59 /* AddressingMode.swift in Sources */,
 				OBJ_60 /* Mnemonic.swift in Sources */,
