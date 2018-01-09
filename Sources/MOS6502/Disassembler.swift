@@ -15,7 +15,7 @@ class Disassembler {
         stream.open()
         print(fileName)
         repeat {
-            if let operation = try? Operation(stream: stream) {
+            if let operation = try? Instruction(stream: stream) {
                 print(operation)
             }
             

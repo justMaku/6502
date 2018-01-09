@@ -10,7 +10,7 @@ import Foundation
 
 public class CPU {
     enum Error: Swift.Error {
-        case unimplementedOperation(opcode: Operation.Opcode)
+        case unimplementedOperation(opcode: Instruction.Opcode)
     }
     
     enum Register {
@@ -86,7 +86,7 @@ public class CPU {
         try self.push(low)
     }
     
-    func execute(operation: Operation) throws {
+    func execute(operation: Instruction) throws {
         switch operation.mnemonic {
         case .SEI:
             self.Status.insert(.interrupt)
@@ -139,12 +139,12 @@ public class CPU {
         }
     }
     
-    private func fetch() throws -> Operation {
+    private func fetch() throws -> Instruction {
         // definitely not optimal
         let data = try [PC, PC + 1, PC + 2].map { try bus.read(from: $0) as Word }
         let stream = MemoryStream(storage: data)
         
-        return try Operation(stream: stream)
+        return try Instruction(stream: stream)
     }
 }
 

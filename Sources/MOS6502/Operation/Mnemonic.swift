@@ -8,7 +8,7 @@
 
 import Foundation
 
-private let mnemonicTable: [Operation.Mnemonic?] = [
+private let mnemonicTable: [Instruction.Mnemonic?] = [
     /*        |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |      */
     /* 0 */    .BRK, .ORA,  nil, .SLO,  nil, .ORA, .ASL, .SLO, .PHP, .ORA, .ASL,  nil,  nil, .ORA, .ASL, .SLO, /* 0 */
     /* 1 */    .BPL, .ORA,  nil, .SLO,  nil, .ORA, .ASL, .SLO, .CLC, .ORA,  nil, .SLO,  nil, .ORA, .ASL, .SLO, /* 1 */
@@ -28,15 +28,15 @@ private let mnemonicTable: [Operation.Mnemonic?] = [
     /* F */    .BEQ, .SBC,  nil, .ISB,  nil, .SBC, .INC, .ISB, .SED, .SBC,  nil, .ISB,  nil, .SBC, .INC, .ISB  /* F */
 ]
 
-extension Operation {
+extension Instruction {
     enum Mnemonic: String {
         
         enum Error: Swift.Error {
-            case UnknownMnemonicOpcode(opcode: Operation.Opcode)
+            case UnknownMnemonicOpcode(opcode: Instruction.Opcode)
             case UnknownMnemonicString(opcode: String)
         }
         
-        init(_ opcode: Operation.Opcode) throws {
+        init(_ opcode: Instruction.Opcode) throws {
             guard let mnemonic = mnemonicTable[Int(opcode)] else {
                 throw Error.UnknownMnemonicOpcode(opcode: opcode)
             }
@@ -117,7 +117,7 @@ extension Operation {
     }
 }
 
-extension Operation.Mnemonic: CustomStringConvertible {
+extension Instruction.Mnemonic: CustomStringConvertible {
     var description: String {
         return "\(self.rawValue)"
     }

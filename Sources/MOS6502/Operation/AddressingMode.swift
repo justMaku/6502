@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Operation {
+extension Instruction {
     enum AddressingMode {
         enum Error: Swift.Error {
             case addressingModeNotImplemented
@@ -57,7 +57,7 @@ extension Operation {
     }
 }
 
-extension Operation.AddressingMode: CustomStringConvertible {
+extension Instruction.AddressingMode: CustomStringConvertible {
     var description: String {
         switch self {
         case .accumulator: return "A"

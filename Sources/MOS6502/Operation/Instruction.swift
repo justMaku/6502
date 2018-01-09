@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Operation {
+struct Instruction {
     
     typealias Opcode = Word
     
@@ -223,7 +223,7 @@ struct Operation {
     }
 }
 
-extension Operation: CustomStringConvertible {
+extension Instruction: CustomStringConvertible {
     var description: String {
         return "\(self.mnemonic) \(self.addressingMode)"
     }
