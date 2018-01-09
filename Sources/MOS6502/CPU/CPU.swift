@@ -58,42 +58,14 @@ public class CPU {
         }
     }
     
-    public func pop() throws -> UInt8 {
-        self.SP += 1
-        
-        let value: UInt8 = try bus.read(from: UInt16(self.SP) + CPU.stackPointerBase)
-        
-        return value
-    }
-    
-    func pop() throws -> UInt16 {
-        let low: UInt8 = try pop()
-        let high: UInt8 = try pop()
-        
-        return UInt16(low) | UInt16(high) << 8
-    }
-    
-    public func push(_ value: UInt8) throws {
-        try self.bus.write(to: UInt16(self.SP) + CPU.stackPointerBase, value: value)
-        self.SP -= 1
-    }
-    
-    public func push(_ value: UInt16) throws {
-        let low: UInt8 = UInt8(value & 0xFF)
-        let high: UInt8 = UInt8(value >> 8) & 0xFF
-
-        try self.push(high)
-        try self.push(low)
-    }
-    
     func execute(operation: Instruction) throws {
         switch operation.mnemonic {
         case .SEI:
             self.Status.insert(.interrupt)
-            PC += 1
+            PC += operation.size
         case .CLD:
             self.Status.remove(.decimal)
-            PC += 1
+            PC += operation.size
         case .LDX:
             self.X = try operation.addressingMode.value(with: self, bus: bus)
             recalculateStatus(flags: [.zero, .negative], for: self.X)
