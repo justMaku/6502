@@ -51,7 +51,7 @@ struct Instruction {
         case 0xed: fallthrough
         case 0xee:
             let data = stream.read() as UInt16
-            self.addressingMode = .absolute(data: data)
+            addressingMode = .absolute(data: data)
         case 0x1d: fallthrough
         case 0x1e: fallthrough
         case 0x3d: fallthrough
@@ -68,7 +68,7 @@ struct Instruction {
         case 0xfd: fallthrough
         case 0xfe:
             let data = stream.read() as UInt16
-            self.addressingMode = .absoluteIndexed(data: data, register: .X)
+            addressingMode = .absoluteIndexed(data: data, register: .X)
         case 0x19: fallthrough
         case 0x39: fallthrough
         case 0x59: fallthrough
@@ -79,12 +79,12 @@ struct Instruction {
         case 0xd9: fallthrough
         case 0xf9:
             let data = stream.read() as UInt16
-            self.addressingMode = .absoluteIndexed(data: data, register: .Y)
+            addressingMode = .absoluteIndexed(data: data, register: .Y)
         case 0x0a: fallthrough
         case 0x2a: fallthrough
         case 0x4a: fallthrough
         case 0x6a:
-            self.addressingMode = .accumulator
+            addressingMode = .accumulator
         case 0x09: fallthrough
         case 0x29: fallthrough
         case 0x49: fallthrough
@@ -97,7 +97,7 @@ struct Instruction {
         case 0xe0: fallthrough
         case 0xe9:
             let data = stream.read() as UInt8
-            self.addressingMode = .immediate(data: data)
+            addressingMode = .immediate(data: data)
         case 0x0: fallthrough
         case 0x8: fallthrough
         case 0x18: fallthrough
@@ -123,7 +123,7 @@ struct Instruction {
         case 0xe8: fallthrough
         case 0xea: fallthrough
         case 0xf8:
-            self.addressingMode = .implied
+            addressingMode = .implied
         case 0x1: fallthrough
         case 0x21: fallthrough
         case 0x41: fallthrough
@@ -133,10 +133,10 @@ struct Instruction {
         case 0xc1: fallthrough
         case 0xe1:
             let data = stream.read() as UInt8
-            self.addressingMode = .indirectIndexed(data: data, register: .X)
+            addressingMode = .indirectIndexed(data: data, register: .X)
         case 0x6c:
             let data = stream.read() as UInt8
-            self.addressingMode = .indirect(data: data)
+            addressingMode = .indirect(data: data)
         case 0x11: fallthrough
         case 0x31: fallthrough
         case 0x51: fallthrough
@@ -146,7 +146,7 @@ struct Instruction {
         case 0xd1: fallthrough
         case 0xf1:
             let data = stream.read() as UInt8
-            self.addressingMode = .indirectIndexed(data: data, register: .Y)
+            addressingMode = .indirectIndexed(data: data, register: .Y)
         case 0x10: fallthrough
         case 0x30: fallthrough
         case 0x50: fallthrough
@@ -156,7 +156,7 @@ struct Instruction {
         case 0xd0: fallthrough
         case 0xf0:
             let data = stream.read() as UInt8
-            self.addressingMode = .relative(data: data)
+            addressingMode = .relative(data: data)
         case 0x5: fallthrough
         case 0x6: fallthrough
         case 0x24: fallthrough
@@ -179,7 +179,7 @@ struct Instruction {
         case 0xe5: fallthrough
         case 0xe6:
             let data = stream.read() as UInt8
-            self.addressingMode = .zeroPage(data: data)
+            addressingMode = .zeroPage(data: data)
         case 0x15: fallthrough
         case 0x16: fallthrough
         case 0x35: fallthrough
@@ -197,13 +197,13 @@ struct Instruction {
         case 0xf5: fallthrough
         case 0xf6:
             let data = stream.read() as UInt8
-            self.addressingMode = .zeroPageIndexed(data: data, register: .X)
+            addressingMode = .zeroPageIndexed(data: data, register: .X)
         case 0x96: fallthrough
         case 0xb6:
             let data = stream.read() as UInt8
-            self.addressingMode = .zeroPageIndexed(data: data, register: .Y)
+            addressingMode = .zeroPageIndexed(data: data, register: .Y)
         default:
-            throw OperationError.unknownAddressingMode(opcode: self.opcode)
+            throw OperationError.unknownAddressingMode(opcode: opcode)
         }
     }
     
@@ -214,6 +214,6 @@ struct Instruction {
 
 extension Instruction: CustomStringConvertible {
     var description: String {
-        return "\(self.mnemonic) \(self.addressingMode)"
+        return "\(mnemonic) \(addressingMode)"
     }
 }

@@ -119,6 +119,6 @@ extension Instruction {
 
 extension Instruction.Mnemonic: CustomStringConvertible {
     var description: String {
-        return "\(self.rawValue)"
+        return "\(rawValue)"
     }
 }

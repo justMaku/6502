@@ -59,51 +59,51 @@ public class CPU {
     func execute(operation: Instruction) throws {
         switch operation.mnemonic {
         case .SEI:
-            self.Status.insert(.interrupt)
+            Status.insert(.interrupt)
             PC += operation.size
         case .CLD:
-            self.Status.remove(.decimal)
+            Status.remove(.decimal)
             PC += operation.size
         case .LDX:
-            self.X = try operation.addressingMode.value(with: self, bus: bus)
-            recalculateStatus(flags: [.zero, .negative], for: self.X)
+            X = try operation.addressingMode.value(with: self, bus: bus)
+            recalculateStatus(flags: [.zero, .negative], for: X)
             PC += operation.size
         case .LDA:
-            self.A = try operation.addressingMode.value(with: self, bus: bus)
-            recalculateStatus(flags: [.zero, .negative], for: self.A)
+            A = try operation.addressingMode.value(with: self, bus: bus)
+            recalculateStatus(flags: [.zero, .negative], for: A)
             PC += operation.size
         case .TXS:
-            self.SP = self.X
-            recalculateStatus(flags: [.zero, .negative], for: self.X)
+            SP = X
+            recalculateStatus(flags: [.zero, .negative], for: X)
             PC += operation.size
         case .TSX:
-            self.X = try pop()
+            X = try pop()
             PC += operation.size
         case .JSR:
-            try self.push(self.PC + operation.size)
-            self.PC = try operation.addressingMode.value(with: self, bus: bus)
+            try push(PC + operation.size)
+            PC = try operation.addressingMode.value(with: self, bus: bus)
         case .INX:
-            self.X = self.X &+ 1
-            recalculateStatus(flags: [.zero, .negative], for: self.X)
-            self.PC += operation.size
+            X = X &+ 1
+            recalculateStatus(flags: [.zero, .negative], for: X)
+            PC += operation.size
         case .STA:
             let address: UInt16 = try operation.addressingMode.value(with: self, bus: bus)
-            try self.bus.write(to: address, value: self.A)
-            self.PC += operation.size
+            try bus.write(to: address, value: A)
+            PC += operation.size
         case .BNE:
-            if self.Status.contains(.zero) != true {
+            if Status.contains(.zero) != true {
                 var offset: UInt16 = try operation.addressingMode.value(with: self, bus: bus)
                 
                 if (offset & 0x80) != 0 {
                     offset |= 0xFF00;
                 }
                 
-                self.PC = self.PC &+ UInt16(offset)
+                PC = PC &+ UInt16(offset)
             } else {
-                self.PC += operation.size
+                PC += operation.size
             }
         case .RTS:
-            self.PC = try pop()
+            PC = try pop()
         case _:
             throw Error.unimplementedOperation(opcode: operation.opcode)
         }

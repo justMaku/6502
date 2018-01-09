@@ -11,9 +11,9 @@ extension CPU {
     static let stackPointerBase: UInt16 = 0x100
 
     internal func pop() throws -> UInt8 {
-        self.SP += 1
+        SP += 1
         
-        let value: UInt8 = try bus.read(from: UInt16(self.SP) + CPU.stackPointerBase)
+        let value: UInt8 = try bus.read(from: UInt16(SP) + CPU.stackPointerBase)
         
         return value
     }
@@ -26,15 +26,15 @@ extension CPU {
     }
     
     internal func push(_ value: UInt8) throws {
-        try self.bus.write(to: UInt16(self.SP) + CPU.stackPointerBase, value: value)
-        self.SP -= 1
+        try bus.write(to: UInt16(SP) + CPU.stackPointerBase, value: value)
+        SP -= 1
     }
     
     internal func push(_ value: UInt16) throws {
         let low: UInt8 = UInt8(value & 0xFF)
         let high: UInt8 = UInt8(value >> 8) & 0xFF
         
-        try self.push(high)
-        try self.push(low)
+        try push(high)
+        try push(low)
     }
 }
