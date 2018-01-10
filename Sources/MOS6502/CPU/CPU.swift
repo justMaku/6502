@@ -46,8 +46,12 @@ public class CPU {
     }
     
     public func step() throws {
+        print(self)
         let instruction = try fetch()
+        print(instruction)
         try execute(instruction: instruction)
+        print(self)
+        print("=============================")
     }
     
     public func run() throws {
@@ -58,6 +62,22 @@ public class CPU {
     
     private func fetch() throws -> Instruction {
         return try Instruction(from: bus, PC: PC)
+    }
+}
+
+extension CPU: CustomStringConvertible {
+    public var description: String {
+        return "PC: \(PC.hex) SP: \(SP.hex) A: \(A.hex) X: \(X.hex) Y: \(Y.hex) \nFlags: \(Status.rawValue.bin)"
+    }
+}
+
+extension FixedWidthInteger {
+    var hex: String {
+        return String(self, radix: 16, uppercase: true)
+    }
+    
+    var bin: String {
+        return String(self, radix: 2, uppercase: true)
     }
 }
 
