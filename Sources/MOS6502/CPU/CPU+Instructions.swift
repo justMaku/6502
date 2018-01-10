@@ -24,6 +24,10 @@ extension CPU {
             A = try instruction.addressingMode.value(with: self, bus: bus)
             recalculateStatus(flags: [.zero, .negative], for: A)
             PC += instruction.size
+        case .LDY:
+            Y = try instruction.addressingMode.value(with: self, bus: bus)
+            recalculateStatus(flags: [.zero, .negative], for: Y)
+            PC += instruction.size
         case .TXS:
             SP = X
             recalculateStatus(flags: [.zero, .negative], for: X)
