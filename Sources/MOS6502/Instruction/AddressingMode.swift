@@ -30,6 +30,8 @@ extension Instruction {
             switch self {
             case .immediate(let data):
                 return data
+            case .absolute(let data):
+                return try bus.read(from: data)
             case _: throw Error.addressingModeNotImplemented
             }
         }
