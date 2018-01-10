@@ -7,22 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		OBJ_31 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
-		OBJ_37 /* Generic6502.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* Generic6502.swift */; };
-		OBJ_38 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* main.swift */; };
-		OBJ_40 /* MOS6502.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "MOS6502::MOS6502::Product" /* MOS6502.framework */; };
-		OBJ_47 /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Bus.swift */; };
-		OBJ_48 /* CPU+Flags.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* CPU+Flags.swift */; };
-		OBJ_49 /* CPU+Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* CPU+Stack.swift */; };
-		OBJ_50 /* CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* CPU.swift */; };
-		OBJ_51 /* AddressingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* AddressingMode.swift */; };
-		OBJ_52 /* Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* Instruction.swift */; };
-		OBJ_53 /* Mnemonic.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* Mnemonic.swift */; };
-		OBJ_54 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* Stream.swift */; };
+		OBJ_32 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
+		OBJ_38 /* Generic6502.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* Generic6502.swift */; };
+		OBJ_39 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* main.swift */; };
+		OBJ_41 /* MOS6502.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "MOS6502::MOS6502::Product" /* MOS6502.framework */; };
+		OBJ_48 /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Bus.swift */; };
+		OBJ_49 /* CPU+Flags.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* CPU+Flags.swift */; };
+		OBJ_50 /* CPU+Instructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* CPU+Instructions.swift */; };
+		OBJ_51 /* CPU+Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* CPU+Stack.swift */; };
+		OBJ_52 /* CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* CPU.swift */; };
+		OBJ_53 /* AddressingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* AddressingMode.swift */; };
+		OBJ_54 /* Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* Instruction.swift */; };
+		OBJ_55 /* Mnemonic.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* Mnemonic.swift */; };
+		OBJ_56 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* Stream.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2E30FA3F20058023007040F7 /* PBXContainerItemProxy */ = {
+		2E30FA4320058077007040F7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
@@ -35,28 +36,29 @@
 		"MOS6502::MOS6502::Product" /* MOS6502.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MOS6502.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"MOS6502::TestSuite::Product" /* TestSuite */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestSuite; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_11 /* CPU+Flags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CPU+Flags.swift"; sourceTree = "<group>"; };
-		OBJ_12 /* CPU+Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CPU+Stack.swift"; sourceTree = "<group>"; };
-		OBJ_13 /* CPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPU.swift; sourceTree = "<group>"; };
-		OBJ_15 /* AddressingMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressingMode.swift; sourceTree = "<group>"; };
-		OBJ_16 /* Instruction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instruction.swift; sourceTree = "<group>"; };
-		OBJ_17 /* Mnemonic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mnemonic.swift; sourceTree = "<group>"; };
-		OBJ_18 /* Stream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
-		OBJ_20 /* Generic6502.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generic6502.swift; sourceTree = "<group>"; };
-		OBJ_21 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		OBJ_12 /* CPU+Instructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CPU+Instructions.swift"; sourceTree = "<group>"; };
+		OBJ_13 /* CPU+Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CPU+Stack.swift"; sourceTree = "<group>"; };
+		OBJ_14 /* CPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPU.swift; sourceTree = "<group>"; };
+		OBJ_16 /* AddressingMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressingMode.swift; sourceTree = "<group>"; };
+		OBJ_17 /* Instruction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instruction.swift; sourceTree = "<group>"; };
+		OBJ_18 /* Mnemonic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mnemonic.swift; sourceTree = "<group>"; };
+		OBJ_19 /* Stream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
+		OBJ_21 /* Generic6502.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generic6502.swift; sourceTree = "<group>"; };
+		OBJ_22 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_9 /* Bus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		OBJ_39 /* Frameworks */ = {
+		OBJ_40 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_40 /* MOS6502.framework in Frameworks */,
+				OBJ_41 /* MOS6502.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_55 /* Frameworks */ = {
+		OBJ_57 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
@@ -70,40 +72,41 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_11 /* CPU+Flags.swift */,
-				OBJ_12 /* CPU+Stack.swift */,
-				OBJ_13 /* CPU.swift */,
+				OBJ_12 /* CPU+Instructions.swift */,
+				OBJ_13 /* CPU+Stack.swift */,
+				OBJ_14 /* CPU.swift */,
 			);
 			path = CPU;
 			sourceTree = "<group>";
 		};
-		OBJ_14 /* Instruction */ = {
+		OBJ_15 /* Instruction */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_15 /* AddressingMode.swift */,
-				OBJ_16 /* Instruction.swift */,
-				OBJ_17 /* Mnemonic.swift */,
+				OBJ_16 /* AddressingMode.swift */,
+				OBJ_17 /* Instruction.swift */,
+				OBJ_18 /* Mnemonic.swift */,
 			);
 			path = Instruction;
 			sourceTree = "<group>";
 		};
-		OBJ_19 /* TestSuite */ = {
+		OBJ_20 /* TestSuite */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_20 /* Generic6502.swift */,
-				OBJ_21 /* main.swift */,
+				OBJ_21 /* Generic6502.swift */,
+				OBJ_22 /* main.swift */,
 			);
 			name = TestSuite;
 			path = Sources/TestSuite;
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_22 /* Tests */ = {
+		OBJ_23 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = Tests;
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_23 /* Products */ = {
+		OBJ_24 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				"MOS6502::TestSuite::Product" /* TestSuite */,
@@ -117,8 +120,8 @@
 			children = (
 				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,
-				OBJ_22 /* Tests */,
-				OBJ_23 /* Products */,
+				OBJ_23 /* Tests */,
+				OBJ_24 /* Products */,
 			);
 			name = "";
 			sourceTree = "<group>";
@@ -127,7 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_8 /* MOS6502 */,
-				OBJ_19 /* TestSuite */,
+				OBJ_20 /* TestSuite */,
 			);
 			name = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -137,8 +140,8 @@
 			children = (
 				OBJ_9 /* Bus.swift */,
 				OBJ_10 /* CPU */,
-				OBJ_14 /* Instruction */,
-				OBJ_18 /* Stream.swift */,
+				OBJ_15 /* Instruction */,
+				OBJ_19 /* Stream.swift */,
 			);
 			name = MOS6502;
 			path = Sources/MOS6502;
@@ -149,10 +152,10 @@
 /* Begin PBXNativeTarget section */
 		"MOS6502::MOS6502" /* MOS6502 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_43 /* Build configuration list for PBXNativeTarget "MOS6502" */;
+			buildConfigurationList = OBJ_44 /* Build configuration list for PBXNativeTarget "MOS6502" */;
 			buildPhases = (
-				OBJ_46 /* Sources */,
-				OBJ_55 /* Frameworks */,
+				OBJ_47 /* Sources */,
+				OBJ_57 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -165,9 +168,9 @@
 		};
 		"MOS6502::SwiftPMPackageDescription" /* MOS6502PackageDescription */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_27 /* Build configuration list for PBXNativeTarget "MOS6502PackageDescription" */;
+			buildConfigurationList = OBJ_28 /* Build configuration list for PBXNativeTarget "MOS6502PackageDescription" */;
 			buildPhases = (
-				OBJ_30 /* Sources */,
+				OBJ_31 /* Sources */,
 			);
 			buildRules = (
 			);
@@ -179,15 +182,15 @@
 		};
 		"MOS6502::TestSuite" /* TestSuite */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_33 /* Build configuration list for PBXNativeTarget "TestSuite" */;
+			buildConfigurationList = OBJ_34 /* Build configuration list for PBXNativeTarget "TestSuite" */;
 			buildPhases = (
-				OBJ_36 /* Sources */,
-				OBJ_39 /* Frameworks */,
+				OBJ_37 /* Sources */,
+				OBJ_40 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				OBJ_41 /* PBXTargetDependency */,
+				OBJ_42 /* PBXTargetDependency */,
 			);
 			name = TestSuite;
 			productName = TestSuite;
@@ -210,7 +213,7 @@
 				en,
 			);
 			mainGroup = OBJ_5 /*  */;
-			productRefGroup = OBJ_23 /* Products */;
+			productRefGroup = OBJ_24 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -222,50 +225,51 @@
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		OBJ_30 /* Sources */ = {
+		OBJ_31 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_31 /* Package.swift in Sources */,
+				OBJ_32 /* Package.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_36 /* Sources */ = {
+		OBJ_37 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_37 /* Generic6502.swift in Sources */,
-				OBJ_38 /* main.swift in Sources */,
+				OBJ_38 /* Generic6502.swift in Sources */,
+				OBJ_39 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_46 /* Sources */ = {
+		OBJ_47 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_47 /* Bus.swift in Sources */,
-				OBJ_48 /* CPU+Flags.swift in Sources */,
-				OBJ_49 /* CPU+Stack.swift in Sources */,
-				OBJ_50 /* CPU.swift in Sources */,
-				OBJ_51 /* AddressingMode.swift in Sources */,
-				OBJ_52 /* Instruction.swift in Sources */,
-				OBJ_53 /* Mnemonic.swift in Sources */,
-				OBJ_54 /* Stream.swift in Sources */,
+				OBJ_48 /* Bus.swift in Sources */,
+				OBJ_49 /* CPU+Flags.swift in Sources */,
+				OBJ_50 /* CPU+Instructions.swift in Sources */,
+				OBJ_51 /* CPU+Stack.swift in Sources */,
+				OBJ_52 /* CPU.swift in Sources */,
+				OBJ_53 /* AddressingMode.swift in Sources */,
+				OBJ_54 /* Instruction.swift in Sources */,
+				OBJ_55 /* Mnemonic.swift in Sources */,
+				OBJ_56 /* Stream.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		OBJ_41 /* PBXTargetDependency */ = {
+		OBJ_42 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "MOS6502::MOS6502" /* MOS6502 */;
-			targetProxy = 2E30FA3F20058023007040F7 /* PBXContainerItemProxy */;
+			targetProxy = 2E30FA4320058077007040F7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		OBJ_28 /* Debug */ = {
+		OBJ_29 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LD = /usr/bin/true;
@@ -273,15 +277,6 @@
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
-		};
-		OBJ_29 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 4 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
-				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
 		};
 		OBJ_3 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -305,7 +300,16 @@
 			};
 			name = Debug;
 		};
-		OBJ_34 /* Debug */ = {
+		OBJ_30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 4 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		OBJ_35 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
@@ -324,7 +328,7 @@
 			};
 			name = Debug;
 		};
-		OBJ_35 /* Release */ = {
+		OBJ_36 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
@@ -363,7 +367,7 @@
 			};
 			name = Release;
 		};
-		OBJ_44 /* Debug */ = {
+		OBJ_45 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -385,7 +389,7 @@
 			};
 			name = Debug;
 		};
-		OBJ_45 /* Release */ = {
+		OBJ_46 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -419,29 +423,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_27 /* Build configuration list for PBXNativeTarget "MOS6502PackageDescription" */ = {
+		OBJ_28 /* Build configuration list for PBXNativeTarget "MOS6502PackageDescription" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_28 /* Debug */,
-				OBJ_29 /* Release */,
+				OBJ_29 /* Debug */,
+				OBJ_30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_33 /* Build configuration list for PBXNativeTarget "TestSuite" */ = {
+		OBJ_34 /* Build configuration list for PBXNativeTarget "TestSuite" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_34 /* Debug */,
-				OBJ_35 /* Release */,
+				OBJ_35 /* Debug */,
+				OBJ_36 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_43 /* Build configuration list for PBXNativeTarget "MOS6502" */ = {
+		OBJ_44 /* Build configuration list for PBXNativeTarget "MOS6502" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_44 /* Debug */,
-				OBJ_45 /* Release */,
+				OBJ_45 /* Debug */,
+				OBJ_46 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

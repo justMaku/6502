@@ -18,7 +18,7 @@ extension Instruction {
         case accumulator
         case immediate(data: UInt8)
         case implied
-        case relative(data: UInt8)
+        case relative(data: Int8)
         case absolute(data: UInt16)
         case zeroPage(data: UInt8)
         case indirect(data: UInt8)
@@ -29,8 +29,6 @@ extension Instruction {
         func value(with cpu: CPU, bus: Bus) throws -> UInt8 {
             switch self {
             case .immediate(let data):
-                return data
-            case .relative(let data):
                 return data
             case _: throw Error.addressingModeNotImplemented
             }
@@ -50,7 +48,7 @@ extension Instruction {
                     throw Error.invalidRegisterIndexed(register: register)
                 }
             case .relative(let data):
-                return UInt16(data)
+                return UInt16(Int32(cpu.PC) + Int32(data))
             case _: throw Error.addressingModeNotImplemented
             }
         }
@@ -78,7 +76,7 @@ extension Instruction.AddressingMode: CustomStringConvertible {
         case .accumulator: return "A"
         case .implied: return ""
         case .immediate(let data): return "#$\(String(format: "%02x", data))"
-        case .relative(let data): return "$\(String(format: "%02x", data))"
+        case .relative(let data): return "$\(String(format: "%0X", data))"
         case .zeroPage(let data): return "$\(String(format: "%02x", data))"
         case .indirect(let data): return "$\(String(format: "%02x", data))"
         case .absolute(let data): return "$\(String(format: "%04x", data))"

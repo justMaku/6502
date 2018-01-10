@@ -152,7 +152,7 @@ struct Instruction {
         case 0xd0: fallthrough
         case 0xf0:
             let data = try bus.read(from: PC + 1) as UInt8
-            addressingMode = .relative(data: data)
+            addressingMode = .relative(data: Int8(bitPattern: data))
         case 0x5: fallthrough
         case 0x6: fallthrough
         case 0x24: fallthrough
