@@ -66,6 +66,10 @@ extension CPU {
             X = X &- 1
             recalculateStatus(flags: [.zero, .negative], for: X)
             PC += instruction.size
+        case .DEY:
+            Y = Y &- 1
+            recalculateStatus(flags: [.zero, .negative], for: Y)
+            PC += instruction.size
         case .JMP:
             PC = try instruction.addressingMode.value(with: self, bus: bus)
         case _:
