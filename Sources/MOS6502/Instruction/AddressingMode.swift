@@ -21,6 +21,7 @@ extension Instruction {
         case absolute(data: UInt16)
         case zeroPage(data: UInt8)
         case indirect(data: UInt16)
+        case indexedIndirect(data: UInt8, register: CPU.Register)
         case indirectIndexed(data: UInt8, register: CPU.Register)
         case absoluteIndexed(data: UInt16, register: CPU.Register)
         case zeroPageIndexed(data: UInt8, register: CPU.Register)
@@ -31,6 +32,9 @@ extension Instruction {
                 return data
             case .absolute(let data):
                 return try bus.read(from: data)
+            case .absoluteIndexed(let data, let register):
+                // Check if we should be overflowing here?
+                return try bus.read(from: data &+ UInt16(cpu[register]))
             case _: throw Error.addressingModeNotImplemented
             }
         }
@@ -50,6 +54,8 @@ extension Instruction {
                 return try bus.read(from: data)
             case .relative(let data):
                 return UInt16(Int32(cpu.PC) + Int32(data))
+            case .zeroPage(let data):
+                return UInt16(data)
             case _: throw Error.addressingModeNotImplemented
             }
         }
@@ -65,6 +71,7 @@ extension Instruction {
             case .relative: return 1
             case .zeroPage: return 1
             case .indirectIndexed: return 1
+            case .indexedIndirect: return 1
             case .zeroPageIndexed: return 1
             }
         }
@@ -81,7 +88,8 @@ extension Instruction.AddressingMode: CustomStringConvertible {
         case .zeroPage(let data): return "$\(String(format: "%02x", data))"
         case .indirect(let data): return "$\(String(format: "%02x", data))"
         case .absolute(let data): return "$\(String(format: "%04x", data))"
-        case .indirectIndexed(let data, let register): return "$\(String(format: "%02x", data)), \(register)"
+        case .indirectIndexed(let data, let register): return "($\(String(format: "%02x", data)), \(register))"
+        case .indexedIndirect(let data, let register): return "($\(String(format: "%02x", data))), \(register)"
         case .absoluteIndexed(let data, let register): return "$\(String(format: "%04x", data)), \(register)"
         case .zeroPageIndexed(let data, let register): return "$\(String(format: "%02x", data)), \(register)"
         }

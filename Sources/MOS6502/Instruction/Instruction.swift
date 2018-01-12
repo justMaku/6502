@@ -129,7 +129,7 @@ struct Instruction {
         case 0xc1: fallthrough
         case 0xe1:
             let data = try bus.read(from: PC + 1) as UInt8
-            addressingMode = .indirectIndexed(data: data, register: .X)
+            addressingMode = .indexedIndirect(data: data, register: .X)
         case 0x6c:
             let data = try bus.read(from: PC + 1) as UInt16
             addressingMode = .indirect(data: data)
