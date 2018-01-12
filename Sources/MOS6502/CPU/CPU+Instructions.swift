@@ -142,22 +142,29 @@ extension CPU {
             
             Status.insert(.break)
         //MARK: Other Instructions, clean me up please.
+        case .LDA:
+            A = try instruction.addressingMode.value(with: self, bus: bus)
+            recalculateStatus(flags: [.zero, .negative], for: A)
+            PC += instruction.size
+        case .STA:
+            let address: UInt16 = try instruction.addressingMode.value(with: self, bus: bus)
+            try bus.write(to: address, value: A)
+            PC += instruction.size
         case .LDX:
             X = try instruction.addressingMode.value(with: self, bus: bus)
             recalculateStatus(flags: [.zero, .negative], for: X)
             PC += instruction.size
-        case .LDA:
-            A = try instruction.addressingMode.value(with: self, bus: bus)
-            recalculateStatus(flags: [.zero, .negative], for: A)
+        case .STX:
+            let address = try instruction.addressingMode.value(with: self, bus: bus) as UInt16
+            try bus.write(to: address, value: X)
             PC += instruction.size
         case .LDY:
             Y = try instruction.addressingMode.value(with: self, bus: bus)
             recalculateStatus(flags: [.zero, .negative], for: Y)
             PC += instruction.size
-
-        case .STA:
-            let address: UInt16 = try instruction.addressingMode.value(with: self, bus: bus)
-            try bus.write(to: address, value: A)
+        case .STY:
+            let address = try instruction.addressingMode.value(with: self, bus: bus) as UInt16
+            try bus.write(to: address, value: Y)
             PC += instruction.size
         case .JMP:
             PC = try instruction.addressingMode.value(with: self, bus: bus)
