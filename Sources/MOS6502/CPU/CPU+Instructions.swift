@@ -138,7 +138,7 @@ extension CPU {
             try push(PC)
             try push(Status.rawValue)
             
-            PC = CPU.interruptVector
+            PC = try bus.read(from: CPU.interruptVector)
         //MARK: Other Instructions, clean me up please.
         case .LDX:
             X = try instruction.addressingMode.value(with: self, bus: bus)

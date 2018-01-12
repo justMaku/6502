@@ -39,7 +39,7 @@ public class CPU {
     }
     
     public func reset() throws {
-        PC = CPU.resetVector
+        PC = try bus.read(from: CPU.resetVector)
         A = 0
         X = 0
         Y = 0
