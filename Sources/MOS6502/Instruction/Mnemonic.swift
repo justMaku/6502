@@ -24,7 +24,7 @@ private let mnemonicTable: [Instruction.Mnemonic?] = [
     /* B */    .BCS, .LDA,  nil, .LAX, .LDY, .LDA, .LDX, .LAX, .CLV, .LDA, .TSX, .LAX, .LDY, .LDA, .LDX, .LAX, /* B */
     /* C */    .CPY, .CMP,  nil, .DCP, .CPY, .CMP, .DEC, .DCP, .INY, .CMP, .DEX,  nil, .CPY, .CMP, .DEC, .DCP, /* C */
     /* D */    .BNE, .CMP,  nil, .DCP,  nil, .CMP, .DEC, .DCP, .CLD, .CMP,  nil, .DCP,  nil, .CMP, .DEC, .DCP, /* D */
-    /* E */    .CPX, .SBC,  nil, .ISB, .CPX, .SBC, .INC, .ISB, .INX, .SBC,  nil, .SBC, .CPX, .SBC, .INC, .ISB, /* E */
+    /* E */    .CPX, .SBC,  nil, .ISB, .CPX, .SBC, .INC, .ISB, .INX, .SBC, .NOP, .SBC, .CPX, .SBC, .INC, .ISB, /* E */
     /* F */    .BEQ, .SBC,  nil, .ISB,  nil, .SBC, .INC, .ISB, .SED, .SBC,  nil, .ISB,  nil, .SBC, .INC, .ISB  /* F */
 ]
 

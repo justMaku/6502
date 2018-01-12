@@ -39,6 +39,10 @@ class Generic6502: Bus {
     }
     
     func write(to address: UInt16, value: UInt8) throws {
+        print("Writing \(value.hex) at \(address.hex)")
+        if (value == 0x9B) {
+            print("break")
+        }
         memory[Int(address)] = value
     }
 }

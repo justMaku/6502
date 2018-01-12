@@ -15,6 +15,8 @@ extension CPU {
         
         let value: UInt8 = try bus.read(from: UInt16(SP) + CPU.stackPointerBase)
         
+        print("Popping value: \(value.hex)")
+        
         return value
     }
     
@@ -27,6 +29,9 @@ extension CPU {
     
     internal func push(_ value: UInt8) throws {
         try bus.write(to: UInt16(SP) + CPU.stackPointerBase, value: value)
+       
+        print("Pushing value: \(value.hex)")
+
         SP -= 1
     }
     

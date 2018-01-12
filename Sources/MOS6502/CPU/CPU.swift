@@ -9,6 +9,10 @@
 import Foundation
 
 public class CPU {
+    static let nmiVector: UInt16 = 0xFFFA
+    static let resetVector: UInt16 = 0xFFFC
+    static let interruptVector: UInt16 = 0xFFFE
+    
     enum Error: Swift.Error {
         case unimplementedInstruction(instruction: Instruction)
     }
@@ -31,21 +35,26 @@ public class CPU {
     var  Status: Flags = []
     
     let bus: Bus
+   
+    let breakpoints: [UInt16] = [0x378A]
     
     public init(bus: Bus) {
         self.bus = bus
     }
     
     public func reset() throws {
-        PC = try bus.read(from: 0xfffc)
+        PC = CPU.resetVector
         A = 0
         X = 0
         Y = 0
-        SP = 0xFD
-        Status = [.break]
+        SP = 0xFF
+        Status = [.break, .interrupt, .always]
     }
     
     public func step() throws {
+        if breakpoints.contains(PC) {
+            print("Breakpoint!")
+        }
         print(self)
         let instruction = try fetch()
         print(instruction)
@@ -72,7 +81,7 @@ extension CPU: CustomStringConvertible {
 }
 
 extension FixedWidthInteger {
-    var hex: String {
+    public var hex: String {
         return String(self, radix: 16, uppercase: true)
     }
     

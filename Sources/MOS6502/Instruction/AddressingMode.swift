@@ -21,7 +21,7 @@ extension Instruction {
         case relative(data: Int8)
         case absolute(data: UInt16)
         case zeroPage(data: UInt8)
-        case indirect(data: UInt8)
+        case indirect(data: UInt16)
         case indirectIndexed(data: UInt8, register: CPU.Register)
         case absoluteIndexed(data: UInt16, register: CPU.Register)
         case zeroPageIndexed(data: UInt8, register: CPU.Register)
@@ -49,6 +49,8 @@ extension Instruction {
                 case  _:
                     throw Error.invalidRegisterIndexed(register: register)
                 }
+            case .indirect(let data):
+                return try bus.read(from: data)
             case .relative(let data):
                 return UInt16(Int32(cpu.PC) + Int32(data))
             case _: throw Error.addressingModeNotImplemented
@@ -61,7 +63,7 @@ extension Instruction {
             case .absoluteIndexed: return 1
             case .implied: return 0
             case .immediate: return 1
-            case .indirect: return 1
+            case .indirect: return 2
             case .accumulator: return 0
             case .relative: return 1
             case .zeroPage: return 1
