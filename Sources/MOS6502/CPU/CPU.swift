@@ -18,12 +18,8 @@ public class CPU {
     }
     
     enum Register {
-        case PC
-        case A
         case X
         case Y
-        case P
-        case S
     }
     
     //MARK: Registers
@@ -71,6 +67,15 @@ public class CPU {
     
     private func fetch() throws -> Instruction {
         return try Instruction(from: bus, PC: PC)
+    }
+    
+    subscript(register: Register) -> UInt8  {
+        switch register {
+        case .X:
+            return X
+        case .Y:
+            return Y
+        }
     }
 }
 

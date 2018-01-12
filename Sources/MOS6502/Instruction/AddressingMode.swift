@@ -12,7 +12,6 @@ extension Instruction {
     enum AddressingMode {
         enum Error: Swift.Error {
             case addressingModeNotImplemented
-            case invalidRegisterIndexed(register: CPU.Register)
         }
         
         case accumulator
@@ -46,8 +45,6 @@ extension Instruction {
                     return UInt16(base &+ cpu.X)
                 case .Y:
                     return UInt16(base &+ cpu.Y)
-                case  _:
-                    throw Error.invalidRegisterIndexed(register: register)
                 }
             case .indirect(let data):
                 return try bus.read(from: data)
